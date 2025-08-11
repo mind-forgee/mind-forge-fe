@@ -1,0 +1,102 @@
+import { useState } from "react";
+
+const RegisterForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    setIsLoading(true);
+    setMessage("Sending Data...");
+    setTimeout(() => {
+      setIsLoading(false);
+      alert("Registration ebrhasil!");
+      setMessage("Data Sent!");
+    }, 2000);
+  };
+
+  return (
+    <div className="flex-1 bg-secondary flex items-center justify-center p-8">
+      <div className="w-full max-w-md">
+        <h2 className="text-2xl font-semibold text-white mb-2">Register Now</h2>
+        <p className="text-white mb-8">
+          Build your career with MindForge!
+          <br />
+          Let's Achieve our Goals Together!
+        </p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="space-y-6">
+            <div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full px-6 py-4 bg-transparent bg-opacity-50 border border-white/30 rounded-md text-white outline-none"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full px-6 py-4 bg-transparent bg-opacity-50 border border-white/30 rounded-md text-white outline-none"
+                required
+              />
+            </div>
+
+            <div>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleInputChange}
+                className="w-full px-6 py-4 bg-transparent bg-opacity-50 border border-white/30 rounded-md text-white outline-none"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-accent text-primary px-6 py-4 rounded-md font-semibold hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? "Registering..." : "Register"}
+            </button>
+          </div>
+        </form>
+
+
+        <p className="text-center text-white mt-6">
+          Already have an Account?{" "}
+          <a href="#" className="text-white hover:underline">
+            Login
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default RegisterForm;
