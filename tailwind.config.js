@@ -15,6 +15,7 @@ export default {
       },
       backgroundImage: {
         register: "url('/images/about.png')",
+        login: "url('/images/login.png')",
       }
     },
   },

@@ -1,6 +1,8 @@
 import { createBrowserRouter, Outlet, Navigate } from "react-router-dom";
 import { LandingLayout } from "../layouts/LandingLayout";
-import RegisterLayout from "../layouts/RegisterLayout";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
+import SelectCourse from "../pages/SelectCourse";
 
 export const router = createBrowserRouter([
     {
@@ -9,6 +11,14 @@ export const router = createBrowserRouter([
     },
     {
         path: "/register",
-        element: <RegisterLayout />
-    }
+        element: <Register />
+    },
+    {
+        path: "/login",
+        element: <Login />
+    },
+    {
+        path: "/select-course",
+        element: <SelectCourse />
+    },
 ])
