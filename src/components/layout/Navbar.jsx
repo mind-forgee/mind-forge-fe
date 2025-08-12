@@ -3,20 +3,21 @@ import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Logo from "./Logo";
 import { navItems } from "../../data/navItems";
-import { Router, useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import UserInfo from "../ui/UserInfo";
+import { useUser } from "../../hooks/useUser";
 
 export default function Navbar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("hero");
+  const { data: user, isLoading } = useUser();
+
   const handleNavClick = (sectionId) => {
-
-
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,47 +38,71 @@ export default function Navbar() {
   return (
     <Disclosure
       as="nav"
-      className="fixed top-0 w-full  bg-secondary text-light  z-50 text-sm "
+      className="fixed top-0 w-full bg-secondary text-light z-50 text-sm"
     >
       {({ open }) => (
         <>
-          <div className=" px-4 sm:px-16 lg:px-16 py-4">
+          <div className="sm:px-16 lg:px-3 py-4">
             <div className="flex items-center justify-between w-full">
-              <div className="flex-shrink-0">
-                <Logo />
-              </div>
+              {/* Logo */}
+              <Logo />
 
-              <div className="flex justify-between w-full max-w-2xl">
-                <div className="hidden md:flex space-x-8 items-center">
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex justify-between w-full max-w-3xl items-center">
+                <div className="flex space-x-8 items-center">
                   {navItems.map((item) => (
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id)}
-                      className={`relative px-3 py-2 transition-all duration-300 hover:text-accent ${activeSection === item.id ? "text-accent" : ""
-                        }`}
+                      className={`relative px-3 py-2 transition-all duration-300 hover:text-accent ${
+                        activeSection === item.id ? "text-accent" : ""
+                      }`}
                     >
                       {item.name}
                       <span
-                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${activeSection === item.id
-                          ? "scale-x-100"
-                          : "scale-x-0 group-hover:scale-x-100"
-                          }`}
+                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${
+                          activeSection === item.id
+                            ? "scale-x-100"
+                            : "scale-x-0 group-hover:scale-x-100"
+                        }`}
                       />
                     </button>
                   ))}
                 </div>
-                <button className="hidden md:block border border-light rounded-md px-9 py-3 hover:bg-light hover:text-secondary transition-all duration-300" onClick={() => navigate('/login')}>
-                  Login
-                </button>
+
+                {/* Desktop User/Login */}
+                {isLoading ? (
+                  <span>Loading...</span>
+                ) : user ? (
+                  <UserInfo />
+                ) : (
+                  <button
+                    className="border border-light rounded-md px-9 py-3 hover:bg-light hover:text-secondary transition-all duration-300"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </button>
+                )}
               </div>
 
-              <div className="md:hidden">
+      
+              <div className="md:hidden flex items-center gap-3">
+                {isLoading ? (
+                  <span>Loading...</span>
+                ) : user ? (
+                  <UserInfo />
+                ) : (
+                  <button
+                    className="border border-light rounded-md px-4 py-2 text-sm hover:bg-light hover:text-secondary transition-all duration-300"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </button>
+                )}
+
+                {/* Mobile Menu Button */}
                 <Disclosure.Button className="p-2 rounded-md hover:text-accent hover:bg-secondary-dark transition-colors">
-                  {open ? (
-                    <X className="h-6 w-6" />
-                  ) : (
-                    <Menu className="h-6 w-6" />
-                  )}
+                  {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Disclosure.Button>
               </div>
             </div>
@@ -91,20 +116,30 @@ export default function Navbar() {
                   key={item.id}
                   as="button"
                   onClick={() => handleNavClick(item.id)}
-                  className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 ${activeSection === item.id
-                    ? "text-accent bg-secondary border-b-4 border-accent"
-                    : "text-light hover:text-accent hover:bg-secondary"
-                    }`}
+                  className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 ${
+                    activeSection === item.id
+                      ? "text-accent bg-secondary border-b-4 border-accent"
+                      : "text-light hover:text-accent hover:bg-secondary"
+                  }`}
                 >
                   {item.name}
                 </Disclosure.Button>
               ))}
 
-              {/* Mobile Login Button */}
-              <div className="px-3 py-2" onClick={() => navigate('/login')}>
-                <button className="w-full border border-light rounded-md px-4 py-2 hover:bg-light hover:text-secondary transition-all duration-300">
-                  Login
-                </button>
+           
+              <div className="px-3 py-2 border-t border-gray-600 mt-2">
+                {isLoading ? (
+                  <span>Loading...</span>
+                ) : user ? (
+                  <UserInfo />
+                ) : (
+                  <button
+                    className="w-full border border-light rounded-md px-4 py-2 hover:bg-light hover:text-secondary transition-all duration-300"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </button>
+                )}
               </div>
             </div>
           </Disclosure.Panel>

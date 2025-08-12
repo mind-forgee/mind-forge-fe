@@ -1,5 +1,4 @@
-import React from 'react'
-import RegisterLayout from '../layouts/RegisterLayout'
+import RegisterLayout from '../../layouts/RegisterLayout'
 
 const Register = () => {
   return (

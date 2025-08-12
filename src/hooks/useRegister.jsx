@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useFormik } from "formik"
 import { useMutation } from '@tanstack/react-query'
 import { toast } from "sonner"
@@ -5,6 +6,7 @@ import axiosInstance from "../lib/axios"
 import { useNavigate } from "react-router-dom"
 
 const useRegister = () => {
+    const navigate = useNavigate()
     const handleCreateUser = async (body) => {
         const { data } = await axiosInstance.post('/auth/register', body)
         return data
@@ -30,6 +32,7 @@ const useRegister = () => {
         onSuccess: () => {
             toast.success("Account created successfully!")
             formik.handleReset()
+            navigate('/login')
         },
     })
 

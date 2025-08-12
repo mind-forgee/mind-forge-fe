@@ -6,9 +6,6 @@ import { useNavigate } from 'react-router-dom'
 
 const useLogin = () => {
     const navigate = useNavigate()
-
-
-
     const handleLoginUser = async (body) => {
         const response = await axiosInstance.post('/auth/login', body, { withCredentials: true })
         return response.data
@@ -22,7 +19,7 @@ const useLogin = () => {
         },
         onSuccess: () => {
             toast.success('Redirecting...')
-            navigate('/select-course')
+            navigate('/success')
         }
     })
 

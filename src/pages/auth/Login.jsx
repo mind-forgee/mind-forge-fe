@@ -1,4 +1,4 @@
-import LoginLayout from "../layouts/LoginLayout"
+import LoginLayout from "../../layouts/LoginLayout"
 
 const Login = () => {
   return (
