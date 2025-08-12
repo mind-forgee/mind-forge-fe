@@ -2,19 +2,22 @@ import { Disclosure } from "@headlessui/react";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Logo from "./Logo";
-import { navItems } from "../../data/navItems"; 
+import { navItems } from "../../data/navItems";
+import { Router, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
+  const navigate = useNavigate()
   const [activeSection, setActiveSection] = useState("hero");
-
   const handleNavClick = (sectionId) => {
+
+
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
- 
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
@@ -50,22 +53,20 @@ export default function Navbar() {
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id)}
-                      className={`relative px-3 py-2 transition-all duration-300 hover:text-accent ${
-                        activeSection === item.id ? "text-accent" : ""
-                      }`}
+                      className={`relative px-3 py-2 transition-all duration-300 hover:text-accent ${activeSection === item.id ? "text-accent" : ""
+                        }`}
                     >
                       {item.name}
                       <span
-                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${
-                          activeSection === item.id
-                            ? "scale-x-100"
-                            : "scale-x-0 group-hover:scale-x-100"
-                        }`}
+                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${activeSection === item.id
+                          ? "scale-x-100"
+                          : "scale-x-0 group-hover:scale-x-100"
+                          }`}
                       />
                     </button>
                   ))}
                 </div>
-                <button className="hidden md:block border border-light rounded-md px-9 py-3 hover:bg-light hover:text-secondary transition-all duration-300">
+                <button className="hidden md:block border border-light rounded-md px-9 py-3 hover:bg-light hover:text-secondary transition-all duration-300" onClick={() => navigate('/login')}>
                   Login
                 </button>
               </div>
@@ -90,18 +91,17 @@ export default function Navbar() {
                   key={item.id}
                   as="button"
                   onClick={() => handleNavClick(item.id)}
-                  className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 ${
-                    activeSection === item.id
-                      ? "text-accent bg-secondary border-b-4 border-accent"
-                      : "text-light hover:text-accent hover:bg-secondary"
-                  }`}
+                  className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 ${activeSection === item.id
+                    ? "text-accent bg-secondary border-b-4 border-accent"
+                    : "text-light hover:text-accent hover:bg-secondary"
+                    }`}
                 >
                   {item.name}
                 </Disclosure.Button>
               ))}
 
               {/* Mobile Login Button */}
-              <div className="px-3 py-2">
+              <div className="px-3 py-2" onClick={() => navigate('/login')}>
                 <button className="w-full border border-light rounded-md px-4 py-2 hover:bg-light hover:text-secondary transition-all duration-300">
                   Login
                 </button>

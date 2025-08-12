@@ -20,17 +20,17 @@ export default function StepSelectDifficulty({ difficulty, setDifficulty }) {
       >
         <span>{difficulty || "Difficulties"}</span>
         <ChevronDown
-          className={`transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
+          className={`transition-transform duration-300 ${open ? "rotate-180" : ""
+            }`}
           size={18}
         />
       </div>
 
- 
+
       <AnimatePresence>
         {open && (
           <motion.div
+          
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

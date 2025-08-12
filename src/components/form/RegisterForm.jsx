@@ -1,31 +1,8 @@
-import { useState } from "react";
+import useRegister from "../../hooks/useRegister";
+import FormInput from "../ui/FormInput";
 
 const RegisterForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  // const [message, setMessage] = useState("");
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      alert("Registration ebrhasil!");
-    }, 2000);
-  };
+  const { formik, isPending } = useRegister()
 
   return (
     <div className="flex-1 bg-secondary flex items-center justify-center p-8">
@@ -37,50 +14,19 @@ const RegisterForm = () => {
           Let's Achieve our Goals Together!
         </p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
           <div className="space-y-6">
-            <div>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full px-6 py-4 bg-transparent bg-opacity-50 border border-white/30 rounded-md text-white outline-none"
-                required
-              />
-            </div>
+            <FormInput placeholder="Full Name" name="full_name" onChange={formik.handleChange} value={formik.values.full_name} />
+            <FormInput placeholder="Email" type="email" name="email" onChange={formik.handleChange} value={formik.values.email} />
+            <FormInput placeholder="password" name="password" onChange={formik.handleChange} type="password" value={formik.values.password} />
 
-            <div>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full px-6 py-4 bg-transparent bg-opacity-50 border border-white/30 rounded-md text-white outline-none"
-                required
-              />
-            </div>
-
-            <div>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange}
-                className="w-full px-6 py-4 bg-transparent bg-opacity-50 border border-white/30 rounded-md text-white outline-none"
-                required
-              />
-            </div>
 
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isPending}
               className="w-full bg-accent text-primary px-6 py-4 rounded-md font-semibold hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? "Registering..." : "Register"}
+              {isPending ? "Registering..." : "Register"}
             </button>
           </div>
         </form>
