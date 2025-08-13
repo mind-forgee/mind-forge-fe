@@ -2,13 +2,13 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { LandingLayout } from "../layouts/LandingLayout";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
-import SelectCourse from "../pages/SelectCourse";
+import SelectCourse from "../pages/precourse/SelectCourse";
 import NotFound from "../pages/dialogs/NotFound";
 import ErrorDialog from "../pages/dialogs/ErrorDialog";
 import SuccessDialog from "../pages/dialogs/SuccessDialog";
 import RootLayout from "../layouts/RootLayout";
-import HomePage from "../pages/users/HomePage";
 import UserLayout from "../layouts/UserLayout";
+import Dashboard from "../pages/users/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -25,12 +25,12 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/user",
+    path: "/dashboard",
     element: <UserLayout />,
     children: [
         {
-            path: "homepage",
-            element: <HomePage />
+            index: true,
+            element: <Dashboard />
         }
     ]
   }

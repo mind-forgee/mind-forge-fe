@@ -1,4 +1,4 @@
-import FormInput from "../ui/FormInput";
+import FormInput from "./FormInput";
 import useLogin from "../../hooks/useLogin";
 
 const LoginForm = () => {

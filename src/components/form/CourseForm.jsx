@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { topics } from "../../data/topics";
-import ProgressBar from "../ui/ProgressBar";
-import StepChooseTopic from "../ui/StepChooseTopic";
-import StepPreviewTopic from "../ui/StepPreviewTopic";
-import StepSelectDifficulty from "../ui/StepSelectDifficulty";
+import ProgressBar from "../courses/ProgressBar";
+import StepChooseTopic from "../courses/StepChooseTopic";
+import StepPreviewTopic from "../courses/StepPreviewTopic";
+import StepSelectDifficulty from "../courses/StepSelectDifficulty";
 import useCreateCourse from "../../hooks/useCreateCourse";
 
 export default function CourseForm({

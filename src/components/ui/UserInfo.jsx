@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from "react";
-import { useUser } from "../../hooks/useUser";
 import { UserRound, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLogout } from "../../hooks/useLogout";
+import { useGetUser } from "../../hooks/useGetUser";
 
 const UserInfo = () => {
-  const { data: user } = useUser();
+  const { data: user } = useGetUser();
   const { mutate: logout } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -22,15 +22,16 @@ const UserInfo = () => {
   }, []);
 
   return (
-    <div className="hidden md:block relative right-0" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef}>
+      {/* Trigger */}
       <div
-        className="flex items-center justify-between max-w-md w-full gap-2 cursor-pointer select-none"
+        className="flex items-center justify-between gap-2 cursor-pointer select-none px-2 py-1 rounded-md hover:bg-secondary/30 transition"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        {user.avatar ? (
+        {user?.avatar ? (
           <img
             src={user.avatar}
-            className="w-8 h-8 rounded-full"
+            className="w-8 h-8 rounded-full object-cover"
             alt="user avatar"
           />
         ) : (
@@ -38,20 +39,19 @@ const UserInfo = () => {
             <UserRound className="w-5 h-5 text-primary" />
           </div>
         )}
-        <div className="flex flex-col">
-          <h1>Hi, {user.full_name}</h1>
-          <p className="text-xs opacity-70">Frontend Developer</p>
+        <div className="flex flex-col min-w-0">
+          <h1 className="truncate">Hi, {user?.full_name || "User"}</h1>
+          <p className="text-xs opacity-70 truncate">Frontend Developer</p>
         </div>
-
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="w-6 h-6 text-gray-500" />
+          <ChevronDown className="w-5 h-5 text-gray-500" />
         </motion.div>
       </div>
 
-
+      {/* Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -59,15 +59,15 @@ const UserInfo = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-48 bg-primary rounded-lg shadow-lg z-50"
+            className="absolute mt-2 w-full bg-primary rounded-lg shadow-lg z-50"
           >
             <ul className="py-1">
-              <li className="px-4 py-2 hover:bg-secondary cursor-pointer">
-                {user.email}
+              <li className="px-4 py-2 hover:bg-secondary cursor-pointer truncate">
+                {user?.email || "No email"}
               </li>
               <li className="px-4 py-2 hover:bg-secondary cursor-pointer text-red-500">
-                <button onClick={() => logout()}>
-                    Logout
+                <button onClick={() => logout()} className="w-full text-left">
+                  Logout
                 </button>
               </li>
             </ul>

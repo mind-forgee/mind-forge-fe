@@ -1,15 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
-import axiosInstance from "../lib/axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { logout } from "../api/auth/logout";
 
 
 
 export function useLogout() {
-  const logout = async () => {
-    const response = await axiosInstance.post("/auth/logout");
-    return response.data;
-  };
 
   const navigate = useNavigate();
 

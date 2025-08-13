@@ -5,9 +5,13 @@ const Hero = () => {
 const { data } = courseApiMock;
 
   return (
+  <div>
+    <div className="mb-8 text-center">
+      <p>{data.category}</p>
+      <h1 className="text-3xl font-semibold">My Dashboard</h1>
+    </div>
     <div className="bg-secondary py-12 rounded-md">
       <div className="w-full px-10 gap-y-7 grid md:grid-cols-2 gap-10 items-center">
-        
         <div className="text-light">
           <p className="text-sm mb-2">{data.category}</p>
           <h1 className="text-3xl font-bold mb-4">
@@ -22,7 +26,7 @@ const { data } = courseApiMock;
         <div className="relative w-full overflow-hidden rounded-lg shadow-lg">
           <iframe
             className="w-full h-64 md:h-80 rounded-lg"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            src={data.hero.promoVideo.embedUrl}
             title="YouTube video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -32,6 +36,7 @@ const { data } = courseApiMock;
 
       </div>
     </div>
+  </div>
   );
 };
 
