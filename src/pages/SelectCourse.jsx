@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 const SelectCourse = () => {
   const [step, setStep] = useState(1);
   const [selectedTopic, setSelectedTopic] = useState(null);
-
   return (
     <main className="min-h-screen flex">
 
@@ -21,7 +20,7 @@ const SelectCourse = () => {
         </div>
       </div>
 
-  
+
       <div className="hidden md:flex flex-[0.9] bg-secondary items-center justify-center p-6">
         <AnimatePresence mode="wait">
           {step !== 1 && selectedTopic?.image && (

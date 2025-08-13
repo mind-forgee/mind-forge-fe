@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { topics } from "../../data/topics"; 
+import { topics } from "../../data/topics";
 import ProgressBar from "../ui/ProgressBar";
 import StepChooseTopic from "../ui/StepChooseTopic";
 import StepPreviewTopic from "../ui/StepPreviewTopic";
 import StepSelectDifficulty from "../ui/StepSelectDifficulty";
+import useCreateCourse from "../../hooks/useCreateCourse";
 
 export default function CourseForm({
   step,
@@ -13,6 +14,7 @@ export default function CourseForm({
   selectedTopic,
   setSelectedTopic
 }) {
+  const { handleGetCourse, isPending } = useCreateCourse()
   const [difficulty, setDifficulty] = useState("");
 
   const nextStep = () => setStep((prev) => prev + 1);
@@ -26,14 +28,14 @@ export default function CourseForm({
   const title =
     step === 1 ? "Choose Your Course" : selectedTopic?.title || "Choose Your Course";
 
-  
+
   const handleSubmit = () => {
     const payload = {
       topic: selectedTopic?.title,
       difficulty: difficulty
     };
 
-    console.log("course terbuat:", payload);
+    handleGetCourse(payload)
 
 
   };

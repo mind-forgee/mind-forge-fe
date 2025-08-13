@@ -15,7 +15,7 @@ export default function RootLayout() {
 
   return (
     <>
-      {loading && <LoadingSpinner visible={loading} />}
+      {/* {loading && <LoadingSpinner visible={loading} />} */}
       <Outlet />
     </>
   );

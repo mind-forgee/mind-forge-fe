@@ -11,7 +11,7 @@ const useRegister = () => {
         const { data } = await axiosInstance.post('/auth/register', body)
         return data
     }
-    
+
     const formik = useFormik({
         initialValues: {
             full_name: "",
