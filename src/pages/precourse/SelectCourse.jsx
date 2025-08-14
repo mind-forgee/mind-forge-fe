@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import CourseForm from "../components/form/CourseForm";
+import CourseForm from "../../components/form/CourseForm"
 import { AnimatePresence, motion } from "framer-motion";
 
 const SelectCourse = () => {

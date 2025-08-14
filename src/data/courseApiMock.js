@@ -18,8 +18,8 @@ export const courseApiMock = {
       },
       promoVideo: {
         provider: "youtube",
-        url: "https://www.youtube.com/watch?v=EXAMPLE",
-        embedUrl: "https://www.youtube.com/embed/EXAMPLE",
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
         duration: "7:20",
       },
     },
@@ -37,10 +37,10 @@ export const courseApiMock = {
 
     tabs: [
       { id: "overview", label: "Overview" },
-      { id: "what-you-learn", label: "What you'll learn" },
-      { id: "requirement", label: "Requirement" },
-      { id: "chapters", label: "Chapters" },
-      { id: "resources", label: "Additional Resources" },
+      { id: "skill-level", label: "Skill Level" },
+      { id: "duration", label: "Duration" },
+      { id: "chapters", label: "No of Chapters" },
+      { id: "video-included", label: "Video Included?" },
     ],
 
     chapters: [

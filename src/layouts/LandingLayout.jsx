@@ -1,6 +1,6 @@
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
-import Landing from "../pages/Landing";
+import Landing from "../pages/landing/Landing";
 
 export const LandingLayout = () => {
   return (

@@ -1,17 +1,15 @@
-// RootLayout.jsx
-import { Outlet, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-import LoadingSpinner from "../components/ui/LoadingSpinner";
+import { Outlet } from "react-router-dom";
+// import LoadingSpinner from "../components/ui/LoadingSpinner";
 
 export default function RootLayout() {
-  const location = useLocation();
-  const [loading, setLoading] = useState(false);
+  // const location = useLocation();
+  // const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 3000); 
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const timer = setTimeout(() => setLoading(false), 3000); 
+  //   return () => clearTimeout(timer);
+  // }, [location.pathname]);
 
   return (
     <>

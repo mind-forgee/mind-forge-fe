@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { topics } from "../../data/topics";
-import ProgressBar from "../ui/ProgressBar";
-import StepChooseTopic from "../ui/StepChooseTopic";
-import StepPreviewTopic from "../ui/StepPreviewTopic";
-import StepSelectDifficulty from "../ui/StepSelectDifficulty";
+import ProgressBar from "../courses/ProgressBar";
+import StepChooseTopic from "../courses/StepChooseTopic";
+import StepPreviewTopic from "../courses/StepPreviewTopic";
+import StepSelectDifficulty from "../courses/StepSelectDifficulty";
 import useCreateCourse from "../../hooks/useCreateCourse";
 
 export default function CourseForm({
@@ -16,6 +16,8 @@ export default function CourseForm({
 }) {
   const { handleGetCourse, isPending } = useCreateCourse()
   const [difficulty, setDifficulty] = useState("");
+
+
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
@@ -109,10 +111,10 @@ export default function CourseForm({
         ) : (
           <button
             onClick={handleSubmit}
-            disabled={!canNext}
+            disabled={!canNext || isPending}
             className="bg-accent text-dark px-12 py-2 rounded disabled:opacity-50"
           >
-            Submit
+            {isPending ? "Generate Course..." : 'Submit'}
           </button>
         )}
       </div>

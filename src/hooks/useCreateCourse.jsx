@@ -1,16 +1,9 @@
 import { useMutation } from "@tanstack/react-query"
-import axiosInstance from "../lib/axios"
+import { createCourse } from "../api/course/createCourse"
 
 const useCreateCourse = () => {
-    const getCourse = async (body) => {
-        const response = await axiosInstance.post('/course', body, { withCredentials: true })
-        const { data } = response.data
-        console.log(JSON.parse(data))
-    }
-
-
     const { mutate: handleGetCourse, isPending } = useMutation({
-        mutationFn: (body) => getCourse(body)
+        mutationFn: (body) => createCourse(body)
     })
 
     return {

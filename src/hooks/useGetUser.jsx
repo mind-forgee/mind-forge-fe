@@ -1,19 +1,12 @@
-// hooks/useUser.js
 import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "../lib/axios";
+import { session } from "../api/auth/session";
 
 
 export const useGetUser = () => {
-  const getUserSession = async () => {
-    const response = await axiosInstance.get("/auth/session", {
-      withCredentials: true,
-    });
-    return response.data.result;
-  };
 
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
-    queryFn: getUserSession,
+    queryFn: session,
   })
 
   return {
