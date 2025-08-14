@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect, useRef } from "react";
-import { useUser } from "../../hooks/useUser";
 import { UserRound, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLogout } from "../../hooks/useLogout";
+import { useGetUser } from "../../hooks/useGetUser";
 
 const UserInfo = () => {
-  const { data: user } = useUser();
+  const { data: user } = useGetUser();
   const { mutate: logout } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -67,7 +67,7 @@ const UserInfo = () => {
               </li>
               <li className="px-4 py-2 hover:bg-secondary cursor-pointer text-red-500">
                 <button onClick={() => logout()}>
-                    Logout
+                  Logout
                 </button>
               </li>
             </ul>

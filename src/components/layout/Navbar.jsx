@@ -5,12 +5,12 @@ import Logo from "./Logo";
 import { navItems } from "../../data/navItems";
 import { useNavigate } from "react-router-dom";
 import UserInfo from "../ui/UserInfo";
-import { useUser } from "../../hooks/useUser";
+import { useGetUser } from "../../hooks/useGetUser";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("hero");
-  const { data: user, isLoading } = useUser();
+  const { data: user, isLoading } = useGetUser();
 
   const handleNavClick = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -54,17 +54,15 @@ export default function Navbar() {
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id)}
-                      className={`relative px-3 py-2 transition-all duration-300 hover:text-accent ${
-                        activeSection === item.id ? "text-accent" : ""
-                      }`}
+                      className={`relative px-3 py-2 transition-all duration-300 hover:text-accent ${activeSection === item.id ? "text-accent" : ""
+                        }`}
                     >
                       {item.name}
                       <span
-                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${
-                          activeSection === item.id
+                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${activeSection === item.id
                             ? "scale-x-100"
                             : "scale-x-0 group-hover:scale-x-100"
-                        }`}
+                          }`}
                       />
                     </button>
                   ))}
@@ -85,7 +83,7 @@ export default function Navbar() {
                 )}
               </div>
 
-      
+
               <div className="md:hidden flex items-center gap-3">
                 {isLoading ? (
                   <span>Loading...</span>
@@ -116,17 +114,16 @@ export default function Navbar() {
                   key={item.id}
                   as="button"
                   onClick={() => handleNavClick(item.id)}
-                  className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 ${
-                    activeSection === item.id
+                  className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 ${activeSection === item.id
                       ? "text-accent bg-secondary border-b-4 border-accent"
                       : "text-light hover:text-accent hover:bg-secondary"
-                  }`}
+                    }`}
                 >
                   {item.name}
                 </Disclosure.Button>
               ))}
 
-           
+
               <div className="px-3 py-2 border-t border-gray-600 mt-2">
                 {isLoading ? (
                   <span>Loading...</span>
