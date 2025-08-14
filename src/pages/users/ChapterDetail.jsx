@@ -39,7 +39,7 @@ export default function ChapterDetail() {
       <div className="mt-4">
         <SecondaryButton
           children={"Next Chapter"}
-          onClick={handleNextChapter}
+          onclick={handleNextChapter}
         />
       </div>
     </div>

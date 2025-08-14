@@ -1,19 +1,15 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Check, Clock } from "lucide-react";
 
 export default function CourseChapters({ chapters }) {
-  // const chapters = courseData.chapters;
-  const [completedChapters, setCompletedChapters] = useState([]);
   const navigate = useNavigate();
-
 
   const goToChapterDetail = (chapterId) => {
     navigate(`/chapter/${chapterId}`);
   };
 
   const progressPercentage = Math.round(
-    (completedChapters.length / chapters.length) * 100
+    (chapters.filter(ch => ch.isCompleted).length / chapters.length) * 100
   );
 
   return (
@@ -42,10 +38,10 @@ export default function CourseChapters({ chapters }) {
             <div className="flex items-center gap-3 flex-1">
               <div
                 className={`w-5 h-5 flex items-center justify-center border rounded ${
-                  completedChapters.includes(idx) ? "bg-primary text-white" : ""
+                  chapter.isCompleted  ? "bg-primary text-white" : ""
                 }`}
               >
-                {completedChapters.includes(idx) && <Check size={14} />}
+                {chapter.isCompleted && <Check size={14} />}
               </div>
               <span className="font-normal text-sm text-gray-800">
                 {chapter.chapterName}
