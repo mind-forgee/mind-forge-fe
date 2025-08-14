@@ -10,6 +10,7 @@ import RootLayout from "../layouts/RootLayout";
 import UserLayout from "../layouts/UserLayout";
 import Dashboard from "../pages/users/Dashboard";
 import Profile from "../pages/users/Profile";
+import ChapterDetail from "../pages/users/ChapterDetail";
 
 
 export const router = createBrowserRouter([
@@ -27,18 +28,21 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
+    path: "/",
     element: <UserLayout />,
     children: [
       {
-        index: true,
+        path: "dashboard",
         element: <Dashboard />
       },
       {
         path: "profile",
         element: <Profile />
       },
-
+      {
+        path: "chapter/:chapterId",
+        element: <ChapterDetail />
+      },
     ]
-  }
+  },
 ]);
