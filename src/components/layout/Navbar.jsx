@@ -13,6 +13,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("hero");
   const { data: user, isLoading } = useGetUser();
+  console.log(user);
 
   const handleNavClick = (sectionId) => {
     const element = document.getElementById(sectionId);

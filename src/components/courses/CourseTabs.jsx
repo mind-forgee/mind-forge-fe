@@ -2,7 +2,7 @@ import { useState } from "react";
 import courseApiMock from "../../data/courseApiMock";
 
 export default function CourseTabs() {
-  const { tabs, meta, longDescription } = courseApiMock.data;
+  const { tabs, longDescription } = courseApiMock.data;
   const [activeTab, setActiveTab] = useState("overview");
 
   return (

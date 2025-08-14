@@ -1,15 +1,13 @@
 import courseApiMock from "../../data/courseApiMock";
 import AccentButton from "../ui/AccentButton";
+import UserHeader from "../users/UserHeader";
 
 const Hero = () => {
 const { data } = courseApiMock;
 
   return (
   <div>
-    <div className="mb-8 text-center">
-      <p>{data.category}</p>
-      <h1 className="text-3xl font-semibold">My Dashboard</h1>
-    </div>
+    <UserHeader subTitle={data.category} title={data.title} />
     <div className="bg-secondary py-12 rounded-md">
       <div className="w-full px-10 gap-y-7 grid md:grid-cols-2 gap-10 items-center">
         <div className="text-light">

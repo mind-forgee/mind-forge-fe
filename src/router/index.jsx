@@ -9,6 +9,7 @@ import SuccessDialog from "../pages/dialogs/SuccessDialog";
 import RootLayout from "../layouts/RootLayout";
 import UserLayout from "../layouts/UserLayout";
 import Dashboard from "../pages/users/Dashboard";
+import Profile from "../pages/users/Profile";
 
 
 export const router = createBrowserRouter([
@@ -32,7 +33,12 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />
-      }
+      },
+      {
+        path: "profile",
+        element: <Profile />
+      },
+
     ]
   }
 ]);
