@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Check, Clock } from "lucide-react";
+import CourseProgress from "./CourseProgress";
 
 export default function CourseChapters({ chapters }) {
   const navigate = useNavigate();
@@ -8,24 +9,9 @@ export default function CourseChapters({ chapters }) {
     navigate(`/chapter/${chapterId}`);
   };
 
-  const progressPercentage = Math.round(
-    (chapters.filter(ch => ch.isCompleted).length / chapters.length) * 100
-  );
-
   return (
     <div className="w-full">
-      <div className="mb-6">
-        <div className="text-center mb-3 text-md text-green-500 font-medium">
-          <span>{progressPercentage}% Completed</span>
-        </div>
-        <div className="w-full bg-gray-300 rounded-full h-2">
-          <div
-            className="bg-green-500 h-2 rounded-full"
-            style={{ width: `${progressPercentage}%` }}
-          ></div>
-        </div>
-      </div>
-
+      
       {chapters.map((chapter, idx) => (
         <div
           key={idx}
