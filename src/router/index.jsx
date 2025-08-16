@@ -12,6 +12,11 @@ import Dashboard from "../pages/users/Dashboard";
 import Profile from "../pages/users/Profile";
 import ChapterDetail from "../pages/users/ChapterDetail";
 import StudyCase from "../pages/users/StudyCase";
+import AdminLayout from "../layouts/AdminLayout";
+import Overview from "../pages/admin/Overview";
+import Courses from "../components/landing/Courses";
+import Blog from "../pages/admin/Blog";
+import ManageCourses from "../pages/admin/ManageCourses";
 
 
 
@@ -46,9 +51,28 @@ export const router = createBrowserRouter([
         path: "chapter/:chapterId",
         element: <ChapterDetail />
       },
-      { 
-        path: "study-case", 
-        element: <StudyCase /> },
+      {
+        path: "study-case",
+        element: <StudyCase />
+      },
     ]
   },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children:[
+      {
+        path: "overview",
+        element: <Overview />
+      },
+      {
+        path: "courses",
+        element: <ManageCourses />
+      },
+      {
+        path: "blog",
+        element: <Blog />
+      },
+    ]
+  }
 ]);
