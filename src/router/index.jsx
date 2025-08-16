@@ -11,7 +11,8 @@ import UserLayout from "../layouts/UserLayout";
 import Dashboard from "../pages/users/Dashboard";
 import Profile from "../pages/users/Profile";
 import ChapterDetail from "../pages/users/ChapterDetail";
-import StudyCase from "../pages/StudyCase"; // adjust the path if needed
+import StudyCase from "../pages/users/StudyCase";
+
 
 
 
@@ -24,7 +25,6 @@ export const router = createBrowserRouter([
       { path: "register", element: <Register /> },
       { path: "login", element: <Login /> },
       { path: "select-course", element: <SelectCourse /> },
-      { path: "study-case", element: <StudyCase /> },
       { path: "error", element: <ErrorDialog /> },
       { path: "success", element: <SuccessDialog /> },
       { path: "*", element: <NotFound /> },
@@ -46,6 +46,9 @@ export const router = createBrowserRouter([
         path: "chapter/:chapterId",
         element: <ChapterDetail />
       },
+      { 
+        path: "study-case", 
+        element: <StudyCase /> },
     ]
   },
 ]);
