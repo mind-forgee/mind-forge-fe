@@ -3,7 +3,6 @@ import { session } from "../api/auth/session";
 
 
 export const useGetUser = () => {
-
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
     queryFn: session,
@@ -15,10 +14,4 @@ export const useGetUser = () => {
   }
 
 
-  // return useQuery({
-  //   queryKey: ["user"], 
-  //   queryFn: getUserSession,
-  //   retry: false, 
-  //   staleTime: 5 * 60 * 1000, 
-  // });
 };

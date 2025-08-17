@@ -1,21 +1,25 @@
 import { useMutation } from '@tanstack/react-query'
 import { useFormik } from 'formik'
 import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { login } from '../api/auth/login'
 
 const useLogin = () => {
     const navigate = useNavigate()
 
-    const { mutate, isPending } = useMutation({
+    const { mutate, isPending, } = useMutation({
         mutationFn: (body) => login(body),
         onError: (err) => {
             console.log(err)
             toast.error("Failed to login")
         },
-        onSuccess: () => {
+        onSuccess: (res) => {
             toast.success('Redirecting...')
-            navigate('/success')
+            console.log(res.data.selected_course_key)
+            if (res?.data.selected_course_key) {
+                return navigate('/dashboard')
+            }
+            return navigate('/success')
         }
     })
 
@@ -31,7 +35,7 @@ const useLogin = () => {
 
     return {
         formik,
-        isPending
+        isPending,
     }
 }
 

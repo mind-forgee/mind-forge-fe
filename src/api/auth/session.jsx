@@ -3,5 +3,6 @@ import { ENDPOINT } from "../endpoint";
 
 export const session = async () => {
   const response = await axiosInstance.get(ENDPOINT.SESSION);
-  return response.data.data;
+  const { data } = response.data
+  return data
 };
