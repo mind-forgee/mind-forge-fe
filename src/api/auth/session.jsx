@@ -1,8 +1,7 @@
 import axiosInstance from "../axios";
 import { ENDPOINT } from "../endpoint";
 
-export const session = async () => {
+export const getSession = async () => {
   const response = await axiosInstance.get(ENDPOINT.SESSION);
-  const { data } = response.data
-  return data
+  return response.data.data;
 };

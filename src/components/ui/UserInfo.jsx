@@ -40,8 +40,10 @@ const UserInfo = () => {
           </div>
         )}
         <div className="flex flex-col min-w-0">
-          <h1 className="truncate">Hi, {user?.full_name || "User"}</h1>
-          <p className="text-xs opacity-70 truncate">Frontend Developer</p>
+          <h1 className="truncate">Hi, {user?.full_name || "Undefined"}</h1>
+          <p className="text-xs opacity-70 truncate max-w-[120px]">
+            {user?.selected_course_key}
+          </p>
         </div>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}

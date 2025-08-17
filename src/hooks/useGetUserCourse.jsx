@@ -1,9 +1,12 @@
-import { QueryClient, useQueryClient } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
+import { getUserCourse } from "../api/course/course";
 
-const useGetUserCourse = () => {
-    const { } = QueryClient({
 
-    })
-}
+export const useGetUserCourse = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["userCourse"],
+    queryFn: getUserCourse,
+  });
 
-export default useGetUserCourse
+  return { data, isLoading };
+};
