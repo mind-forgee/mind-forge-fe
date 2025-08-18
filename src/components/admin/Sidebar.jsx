@@ -14,7 +14,7 @@ import {
 const sidebarItems = [
   { name: "Overview", icon: LayoutDashboard, path: "/admin/overview" },
   { name: "Courses", icon: BookOpen, path: "/admin/courses" },
-  { name: "Projects", icon: FolderKanban, path: "/admin/projects" },
+  { name: "Topic", icon: FolderKanban, path: "/admin/topics" },
   { name: "User Profile", icon: User, path: "/admin/profile" },
   { name: "Account", icon: Settings, path: "/admin/account" },
   { name: "Corporate", icon: Building2, path: "/admin/corporate" },

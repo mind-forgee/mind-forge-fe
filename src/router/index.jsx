@@ -17,6 +17,7 @@ import Overview from "../pages/admin/Overview";
 import Courses from "../components/landing/Courses";
 import Blog from "../pages/admin/Blog";
 import ManageCourses from "../pages/admin/ManageCourses";
+import Topics from "../pages/admin/Topics";
 
 
 
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: "courses",
         element: <ManageCourses />
+      },
+      {
+        path: "topics",
+        element: <Topics />
       },
       {
         path: "blog",
