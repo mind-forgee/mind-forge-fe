@@ -1,6 +1,7 @@
-import { getSession } from "../auth/session";
+import axiosInstance from "../axios";
+import { ENDPOINT } from "../endpoint";
 
 export const getUserCourse = async () => {
-  const { courseUser } = await getSession();
-  return courseUser;
+  const response = await axiosInstance.get(ENDPOINT.COURSE);
+  return response.data.data;
 };

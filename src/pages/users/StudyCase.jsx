@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import Criteria from "../../components/studycase/criteria";
-import Footer from "../../components/layout/Footer";
+const StudyCase = ({ title, description, content}) => {
 
-const StudyCase = () => {
-  const [description, setDescription] = useState("");
   const handleUploadVideo = () => alert("Upload clicked");
   const handlePrevious = () => alert("Previous clicked");
   const handleSubmit = () => alert("Submit clicked");
@@ -11,10 +7,7 @@ const StudyCase = () => {
   return (
     <div className="bg-[#F6F8FE] text-gray-900 min-h-screen flex flex-col">
       <main className="container mx-auto px-6 py-28 flex-1">
-        <h2 className="text-3xl font-bold text-center">Study Case</h2>
-        <p className="text-xl text-center font-semibold mb-8">
-          Make Your Own Website Portofolio!
-        </p>
+        <h2 className="text-3xl font-bold text-center">{title}</h2>
         <div className="flex justify-center mb-10">
           <img
             src="/images/studicase.png"
@@ -25,14 +18,14 @@ const StudyCase = () => {
         <section className="mb-8">
           <h3 className="text-2xl font-bold mb-3">Description</h3>
           <p className="text-gray-700">
-            You have been asked to create a personal portfolio website that
-            showcases your skills, projects, and contact information to
-            potential employers or clients. How would you design and build this
-            website to effectively highlight your strengths as a front-end
-            developer?
+           {description}
           </p>
         </section>
-        <Criteria />
+        <section className="mb-8">
+          <p className="text-gray-700">
+           {content}
+          </p>
+        </section>
         <section>
           <h3 className="text-2xl font-bold mb-4">Submission</h3>
           <div className="bg-white p-6 rounded-md shadow-sm">
@@ -69,12 +62,12 @@ const StudyCase = () => {
               <label className="block text-sm font-medium mb-2">
                 Course Descriptions
               </label>
-              <textarea
+              {/* <textarea
                 rows="4"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="block w-full border border-gray-300 rounded-md p-3"
-              />
+              /> */}
             </div>
             <div className="flex justify-between mt-6">
               <button

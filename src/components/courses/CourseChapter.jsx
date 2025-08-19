@@ -20,15 +20,15 @@ export default function CourseChapters({ chapters }) {
             onClick={() => goToChapterDetail(chapter.id)}
           >
             <div className="flex items-center gap-3 flex-1">
-              {/* <div
+              <div
                 className={`w-5 h-5 flex items-center justify-center border rounded ${
                   chapter.is_completed ? "bg-primary text-white" : ""
                 }`}
               >
                 {chapter.is_completed && <Check size={14} />}
-              </div> */}
+              </div>
               <span className="font-normal text-sm text-gray-800">
-                {chapter.chapter_name}
+                {chapter.title}
               </span>
             </div>
             <div className="flex items-center gap-2">

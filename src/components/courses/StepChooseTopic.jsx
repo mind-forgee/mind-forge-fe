@@ -12,7 +12,7 @@ export default function StepChooseTopic({ topics, selectedTopic, setSelectedTopi
               : "bg-white text-dark font-semibold"
           }`}
         >
-          {topic.title}
+          {topic.name}
         </button>
       ))}
     </div>

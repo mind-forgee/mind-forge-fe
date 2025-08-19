@@ -3,5 +3,6 @@ export const ENDPOINT = {
     REGISTER: '/auth/register',
     LOGOUT: '/auth/logout',
     SESSION: '/auth/session',
-    COURSE: '/learning-path',
+    COURSE: '/courses',
+    TOPICS: '/topics',
 };
