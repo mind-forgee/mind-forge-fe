@@ -4,9 +4,12 @@ import { UserRound, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLogout } from "../../hooks/useLogout";
 import { useGetUser } from "../../hooks/useGetUser";
+import { useGetUserCourse } from "../../hooks/useGetUserCourse";
 
 const UserInfo = () => {
   const { data: user } = useGetUser();
+  const { data: course } = useGetUserCourse();
+  const userCourse = course?.course;
   const { mutate: logout } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -39,8 +42,10 @@ const UserInfo = () => {
           </div>
         )}
         <div className="flex flex-col min-w-0">
-          <h1 className="truncate">Hi, {user.full_name || "User"}</h1>
-          <p className="text-xs opacity-70 truncate">Frontend Developer</p>
+          <h1 className="truncate">Hi, {user?.full_name || "Undefined"}</h1>
+          <p className="text-xs opacity-70 truncate max-w-[120px]">
+            {userCourse?.title || "No course assigned"}
+          </p>
         </div>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
@@ -62,12 +67,8 @@ const UserInfo = () => {
           >
             <ul className="py-1">
               <li className="px-4 py-2 hover:bg-secondary cursor-pointer truncate">
-                {user?.user.email || "No email"}
-              </li>
-              <li className="px-4 py-2 hover:bg-secondary cursor-pointer text-red-500">
-                <button onClick={() => logout()} className="w-full text-left">
+                <a href="/profile">{user?.email || "No email"}</a>
                   Logout
-                </button>
               </li>
             </ul>
           </motion.div>

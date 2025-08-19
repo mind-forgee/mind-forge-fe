@@ -2,7 +2,7 @@
 export default function StepChooseTopic({ topics, selectedTopic, setSelectedTopic }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {topics.map((topic) => (
+      {topics?.map((topic) => (
         <button
           key={topic.id}
           onClick={() => setSelectedTopic(topic)}
@@ -12,7 +12,7 @@ export default function StepChooseTopic({ topics, selectedTopic, setSelectedTopi
               : "bg-white text-dark font-semibold"
           }`}
         >
-          {topic.title}
+          {topic.name}
         </button>
       ))}
     </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import { Grid, Search, PlusCircle } from "lucide-react";
+import { LayoutGrid, Search, PlusCircle } from "lucide-react";
 
 export default function ProgressBar({ currentStep }) {
   const steps = [
-    { id: 1, icon: <Grid size={20} /> },
+    { id: 1, icon: <LayoutGrid  size={20} /> },
     { id: 2, icon: <Search size={20} /> },
     { id: 3, icon: <PlusCircle size={20} /> },
   ];
