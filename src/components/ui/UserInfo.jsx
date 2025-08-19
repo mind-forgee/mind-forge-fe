@@ -20,7 +20,6 @@ const UserInfo = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
   return (
     <div className="relative" ref={dropdownRef}>
       {/* Trigger */}
@@ -40,7 +39,7 @@ const UserInfo = () => {
           </div>
         )}
         <div className="flex flex-col min-w-0">
-          <h1 className="truncate">Hi, {user?.full_name || "User"}</h1>
+          <h1 className="truncate">Hi, {user.full_name || "User"}</h1>
           <p className="text-xs opacity-70 truncate">Frontend Developer</p>
         </div>
         <motion.div
@@ -63,7 +62,7 @@ const UserInfo = () => {
           >
             <ul className="py-1">
               <li className="px-4 py-2 hover:bg-secondary cursor-pointer truncate">
-                {user?.email || "No email"}
+                {user?.user.email || "No email"}
               </li>
               <li className="px-4 py-2 hover:bg-secondary cursor-pointer text-red-500">
                 <button onClick={() => logout()} className="w-full text-left">

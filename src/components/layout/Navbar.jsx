@@ -13,7 +13,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("hero");
   const { data: user, isLoading } = useGetUser();
-  console.log(user);
+
 
   const handleNavClick = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -38,7 +38,7 @@ export default function Navbar() {
   }, []);
 
   const renderAuthButton = (isMobile = false) => {
-    if (isLoading) return <ButtonSkeleton />;
+    // if (isLoading) return <ButtonSkeleton />;
     if (user) {
       return (
         <div className={`${isMobile ? "w-full flex justify-center py-3" : ""}`}>
@@ -48,11 +48,10 @@ export default function Navbar() {
     }
     return (
       <button
-        className={`border border-light rounded-md transition-all duration-300 ${
-          isMobile
+        className={`border border-light rounded-md transition-all duration-300 ${isMobile
             ? "w-full px-4 py-2 hover:bg-light hover:text-secondary"
             : "px-9 py-3 hover:bg-light hover:text-secondary"
-        }`}
+          }`}
         onClick={() => navigate("/login")}
       >
         Login
@@ -82,17 +81,15 @@ export default function Navbar() {
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`relative px-3 py-2 hover:text-accent transition-all duration-300 ${
-                      activeSection === item.id ? "text-accent" : ""
-                    } group`}
+                    className={`relative px-3 py-2 hover:text-accent transition-all duration-300 ${activeSection === item.id ? "text-accent" : ""
+                      } group`}
                   >
                     {item.name}
                     <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${
-                        activeSection === item.id
+                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-transform origin-left duration-300 ${activeSection === item.id
                           ? "scale-x-100"
                           : "scale-x-0 group-hover:scale-x-100"
-                      }`}
+                        }`}
                     />
                   </button>
                 ))}
@@ -121,8 +118,8 @@ export default function Navbar() {
                   as="button"
                   onClick={() => handleNavClick(item.id)}
                   className={`block w-full text-left px-3 py-2 rounded-md transition-all duration-200 ${activeSection === item.id
-                      ? "text-accent bg-secondary border-b-4 border-accent"
-                      : "text-light hover:text-accent hover:bg-secondary"
+                    ? "text-accent bg-secondary border-b-4 border-accent"
+                    : "text-light hover:text-accent hover:bg-secondary"
                     }`}
                 >
                   {item.name}
