@@ -18,6 +18,7 @@ import Courses from "../components/landing/Courses";
 import Blog from "../pages/admin/Blog";
 import ManageCourses from "../pages/admin/ManageCourses";
 import Topics from "../pages/admin/Topics";
+import ProtectedRoutes from "../layouts/ProtectedRoutes";
 
 
 
@@ -38,30 +39,36 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <UserLayout />,
+    element: <ProtectedRoutes />,
     children: [
       {
-        path: "dashboard",
-        element: <Dashboard />
-      },
-      {
-        path: "profile",
-        element: <Profile />
-      },
-      {
-        path: "chapter/:chapterId",
-        element: <ChapterDetail />
-      },
-      {
-        path: "study-case",
-        element: <StudyCase />
-      },
+        path: '/',
+        element: <UserLayout />,
+        children: [
+          {
+            path: "dashboard",
+            element: <Dashboard />
+          },
+          {
+            path: "profile",
+            element: <Profile />
+          },
+          {
+            path: "chapter/:chapterId",
+            element: <ChapterDetail />
+          },
+          {
+            path: "study-case",
+            element: <StudyCase />
+          },
+        ]
+      }
     ]
   },
   {
     path: "/admin",
     element: <AdminLayout />,
-    children:[
+    children: [
       {
         path: "overview",
         element: <Overview />

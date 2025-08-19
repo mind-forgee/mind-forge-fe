@@ -25,9 +25,9 @@ const SelectCourse = () => {
         <AnimatePresence mode="wait">
           {step !== 1 && selectedTopic?.image && (
             <motion.img
-              key={selectedTopic.image}
-              src={selectedTopic.image}
-              alt={selectedTopic.title}
+              key={selectedTopic?.image}
+              src={selectedTopic?.image}
+              alt={selectedTopic?.title}
               className="max-w-full max-h-full object-contain"
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}

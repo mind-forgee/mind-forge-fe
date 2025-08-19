@@ -48,8 +48,8 @@ const Profile = () => {
               name={user.full_name}
               email={user.email}
               phone={"08237213123"}
-              plan={userCourse.title}
-              level={userCourse.difficulty}
+              plan={userCourse?.title}
+              level={userCourse?.difficulty}
               onLogout={logout}
             />
           </div>
