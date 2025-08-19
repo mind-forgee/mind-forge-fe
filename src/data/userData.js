@@ -1,0 +1,42 @@
+export const userData = [
+  {
+    id: 1,
+    name: "ByeWind",
+    date: "Jun 24, 2025",
+    course: "Mobile Development",
+    status: "inProgress",
+    avatar: "https://i.pravatar.cc/40?img=1",
+  },
+  {
+    id: 2,
+    name: "Natali Craig",
+    date: "Mar 10, 2025",
+    course: "Front End Development",
+    status: "complete",
+    avatar: "https://i.pravatar.cc/40?img=2",
+  },
+  {
+    id: 3,
+    name: "Drew Cano",
+    date: "Nov 10, 2025",
+    course: "Back End Development",
+    status: "pending",
+    avatar: "https://i.pravatar.cc/40?img=3",
+  },
+  {
+    id: 4,
+    name: "Orlando Diggs",
+    date: "Dec 20, 2025",
+    course: "Project Management",
+    status: "approved",
+    avatar: "https://i.pravatar.cc/40?img=4",
+  },
+  {
+    id: 5,
+    name: "Andi Lane",
+    date: "Jul 25, 2025",
+    course: "System Management",
+    status: "rejected",
+    avatar: "https://i.pravatar.cc/40?img=5",
+  },
+];

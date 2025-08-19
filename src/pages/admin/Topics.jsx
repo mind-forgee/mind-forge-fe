@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { topics } from "../../data/topics";
 import TopicsTable from "../../components/admin/TopicsTable";
 import TopicsModal from "../../components/admin/TopicsModal";
 import AddTopicForm from "../../components/form/AddTopicForm";
+import { useGetAllTopics } from "../../hooks/useGetAllTopics";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
 
 const Topics = () => {
+  const { data: topics, isLoading } = useGetAllTopics();
   const [data, setData] = useState(topics);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -15,11 +17,18 @@ const Topics = () => {
 
   return (
     <main className="p-6">
-      <TopicsTable
-        columns={["ID", "Name", "Image", "Description"]}
-        data={data}
-        onAdd={() => setIsOpen(true)}
-      />
+      <h1 className="text-2xl font-bold mb-4">Topics</h1>
+      {isLoading ? (
+        <div className="min-h-screen flex justify-center items-center">
+          <LoadingSpinner  />
+        </div>
+      ) : (
+        <TopicsTable
+          columns={["ID", "Name", "Image", "Description"]}
+          data={data}
+          onAdd={() => setIsOpen(true)}
+        />
+      )}
 
       <TopicsModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <AddTopicForm onSubmit={handleAdd} />

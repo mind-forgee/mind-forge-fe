@@ -18,7 +18,7 @@ const useLogin = () => {
             if (res?.data.selected_course) {
                 return navigate('/dashboard')
             }
-            return navigate('/success')
+            return navigate('/select-course')
         }
     })
 

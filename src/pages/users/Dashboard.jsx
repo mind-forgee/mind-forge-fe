@@ -2,9 +2,9 @@ import CourseChapters from "../../components/courses/CourseChapter";
 import CourseProgress from "../../components/courses/CourseProgress";
 import Hero from "../../components/courses/Hero";
 import CourseTabs from '../../components/courses/CourseTabs'
-
 import { useGetUserCourse } from "../../hooks/useGetUserCourse";
 import SecondaryButton from "../../components/ui/SecondaryButton";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
 
 
 const Dashboard = () => {
@@ -13,7 +13,7 @@ const Dashboard = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <p className="text-lg">Loading course...</p>
+        <LoadingSpinner />
       </div>
     );
   }

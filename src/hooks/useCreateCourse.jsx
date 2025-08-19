@@ -1,15 +1,28 @@
-import { useMutation } from "@tanstack/react-query"
-import { createCourse } from "../api/course/createCourse"
+/* eslint-disable no-unused-vars */
+import { useMutation } from "@tanstack/react-query";
+import { createCourse } from "../api/course/createCourse";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const useCreateCourse = () => {
-    const { mutate: handleGetCourse, isPending } = useMutation({
-        mutationFn: (body) => createCourse(body)
-    })
+  const navigate = useNavigate();
+  const { mutate: handleGetCourse, isPending } = useMutation({
+    mutationFn: (body) => createCourse(body),
 
-    return {
-        handleGetCourse,
-        isPending
-    }
-}
+    onError: (err) => {
+      console.log(err);
+      toast.error("Failed to create course");
+    },
+    onSuccess: (res) => {
+      toast.success("Redirecting...");
+      return navigate("/dashboard");
+    },
+  });
 
-export default useCreateCourse
+  return {
+    handleGetCourse,
+    isPending,
+  };
+};
+
+export default useCreateCourse;
