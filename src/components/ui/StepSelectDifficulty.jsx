@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 export default function StepSelectDifficulty({ difficulty, setDifficulty }) {
-  const options = ["beginner", "intermediate", "advanced"];
+  const options = ["Beginner", "Intermediate", "Advanced"];
   const [open, setOpen] = useState(false);
 
   return (

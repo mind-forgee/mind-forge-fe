@@ -2,13 +2,16 @@
 import { useFormik } from "formik"
 import { useMutation } from '@tanstack/react-query'
 import { toast } from "sonner"
+import axiosInstance from "../lib/axios"
 import { useNavigate } from "react-router-dom"
-import { register } from "../api/auth/register"
 
 const useRegister = () => {
     const navigate = useNavigate()
-
-
+    const handleCreateUser = async (body) => {
+        const { data } = await axiosInstance.post('/auth/register', body)
+        return data
+    }
+    
     const formik = useFormik({
         initialValues: {
             full_name: "",
@@ -22,7 +25,7 @@ const useRegister = () => {
     })
 
     const { mutate, isPending } = useMutation({
-        mutationFn: (body) => register(body),
+        mutationFn: (body) => handleCreateUser(body),
         onError: (err) => {
             toast.error("Failed to create account. Please try again.")
         },

@@ -1,96 +1,134 @@
-const courseData = {
-  courseName: "FrontEnd Development",
-  difficulty: "Intermediate",
-  category: "Frontend Development",
-  description: "This comprehensive Front-End Development course is designed for intermediate learners who have a foundational understanding of HTML, CSS, and basic JavaScript. It aims to elevate your skills to build modern, efficient, and robust web applications using industry-standard tools and frameworks. Throughout this course, you will delve into advanced JavaScript concepts, master a leading JavaScript framework like React.js, and learn essential practices such as state management, API integration, performance optimization, and thorough testing. By the end, you will be equipped to develop scalable single-page applications, understand professional development workflows, and deploy your projects with confidence, preparing you for a successful career as a front-end developer.",
-  chapters: [
-    {
-      id: 101,
-      chapterName: "Mastering Modern JavaScript",
-      description: "This chapter is crucial for building a strong foundation in contemporary web development, focusing on advanced features and paradigms introduced in ES6 and beyond. It covers asynchronous programming patterns, modularity, and sophisticated syntax that are indispensable for creating complex and maintainable applications. By mastering these concepts, learners will gain the ability to write cleaner, more efficient, and highly scalable JavaScript code, which is essential for working with modern frameworks and libraries. This understanding is key to debugging complex issues, optimizing application performance, and contributing effectively to large-scale projects, preparing you for the demands of professional front-end development.",
-      time: "2h 30m",
-      isCompleted: true,
-      content: [
-        "Asynchronous JavaScript (Promises, Async/Await): Asynchronous JavaScript is a fundamental concept allowing non-blocking operations, which means code execution doesn't halt while waiting for long-running tasks like network requests. This is critical for maintaining a responsive user interface, preventing the browser from freezing. Developers primarily use Promises, which represent the eventual completion or failure of an asynchronous operation, and the `async`/`await` syntax, which provides a more readable and synchronous-like way to write asynchronous code. Key concepts include understanding the JavaScript event loop, microtask queue, and handling potential errors gracefully using `try...catch` blocks. For example, when fetching data from a REST API using the Fetch API or Axios, `async/await` ensures that the user interface remains interactive while the data is being retrieved in the background.",
-        "ES Modules (Import/Export): ES Modules, introduced in ECMAScript 2015 (ES6), provide a standardized system for organizing and reusing JavaScript code across multiple files. This modular approach significantly improves code readability, maintainability, and reusability, allowing developers to break down large applications into smaller, manageable units. The primary tools for using ES Modules in a browser environment often involve bundlers like Webpack or Vite, which resolve module dependencies and create optimized bundles. Key concepts include named and default imports/exports, understanding module scope, and how circular dependencies are handled. For instance, in a large application, you might export a component from one file and import it into another, promoting a component-based architecture and clear separation of concerns.",
-        "Destructuring & Spread/Rest Operators: Destructuring assignment is a JavaScript syntax that allows unpacking values from arrays or properties from objects into distinct variables, simplifying code and making it more readable. The spread (...) operator expands an iterable (like an array) into individual elements or an object into key-value pairs, while the rest (...) operator collects multiple elements into an array. These operators are vital for working with immutable data patterns, which are common in modern front-end frameworks like React. They are often used when passing props, merging objects, cloning arrays, or defining flexible function arguments. For example, you can use object destructuring to extract specific properties from a `props` object in a React component, or use the spread operator to add a new item to an array without mutating the original array when updating state."
-      ]
+// Simulasi respons API (prototype) — sesuai screenshot yang dibagi 2 bagian
+export const courseApiMock = {
+  status: "success",
+  message: "Course detail fetched",
+  data: {
+    id: "course_fe_beg_001",
+    slug: "front-end-for-beginners",
+    category: "Front End Developer",
+    title: "Front End for Beginners",
+    shortSubtitle:
+      "No experience? No problem! Front-end development is all about learning step-by-step.",
+    longDescription:
+      "Front End for Beginners is a carefully designed course that welcomes absolute newcomers into the world of web development. It covers HTML, CSS, and JavaScript with hands-on projects and practical guidance.",
+    hero: {
+      thumbnail: {
+        url: "https://via.placeholder.com/900x500.png?text=Course+Hero+Thumb",
+        alt: "Course thumbnail / hero video frame",
+      },
+      promoVideo: {
+        provider: "youtube",
+        url: "https://www.youtube.com/watch?v=EXAMPLE",
+        embedUrl: "https://www.youtube.com/embed/EXAMPLE",
+        duration: "7:20",
+      },
     },
-    {
-      id: 102,
-      chapterName: "Introduction to Component-Based Frameworks (React.js)",
-      description: "This chapter introduces learners to the world of component-based architectures, specifically focusing on React.js, one of the most widely used JavaScript libraries for building user interfaces. Understanding React is crucial because it promotes a modular, declarative, and efficient way to build complex UIs, significantly speeding up development time and improving application scalability. You will learn the core principles behind React's virtual DOM, JSX syntax, and the fundamental concepts of components, props, and state management. Mastering these foundational elements will enable you to effectively structure, build, and manage interactive front-end applications, providing a solid stepping stone for advanced framework concepts and professional development roles.",
-      time: "2h 0m",
-      isCompleted: false,
-      content: [
-        "React Fundamentals & JSX: React is a declarative, component-based JavaScript library for building user interfaces, making it easier to manage complex UI states and interactions. Its importance lies in its efficiency due to the Virtual DOM, which optimizes updates to the actual DOM, and its component-based structure, which promotes reusability. JSX (JavaScript XML) is a syntax extension used with React that allows writing HTML-like code directly within JavaScript, making component creation intuitive and readable. While JSX is not required, tools like Babel are used to transpile JSX into regular JavaScript before it runs in the browser. A core concept is that React components return JSX, describing what the UI should look like. For instance, creating a `Button` component in React involves writing JSX to define its appearance and behavior, then rendering it multiple times across your application with different properties.",
-        "Components: Props & State: In React, components are independent, reusable building blocks that encapsulate UI elements and their logic. Props (short for properties) are used to pass data from a parent component down to a child component, enabling components to be dynamic and customizable without changing their internal logic. State, on the other hand, is data managed within a component that can change over time due to user interactions or network responses, leading to re-renders of the component. The unidirectional data flow (props flow down, state changes within) is a key concept that simplifies debugging and predictability. For example, a `UserCard` component might receive `name` and `email` as props, while an `Accordion` component would manage its `isOpen` state internally, toggling visibility based on user clicks.",
-        "Lifecycle Methods & Hooks: In earlier versions of React, class components used lifecycle methods (like `componentDidMount`, `componentDidUpdate`) to manage side effects and respond to changes at specific points in a component's existence. With the introduction of Hooks in React 16.8, functional components gained the ability to use state and other React features without writing a class. The `useEffect` Hook is paramount for handling side effects such as data fetching, subscriptions, or manually changing the DOM, providing a unified way to manage component lifecycle. Understanding when and how to use `useEffect`, `useState`, `useContext`, and `useRef` is crucial for writing efficient and clean functional components. For example, `useEffect` can be used to fetch data from an API when a component mounts, or to clean up event listeners when it unmounts, ensuring proper resource management."
-      ]
+
+    meta: {
+      skillLevel: "Beginner",
+      totalDuration: "7 hours",
+      numberOfChapters: 10,
+      videoIncluded: true,
+      totalLessons: 10,
+      completedLessons: 3,
+      progressPercentage: 15,
+      totalLectures: 4
     },
-    {
-      id: 103,
-      chapterName: "Advanced React Concepts & State Management",
-      description: "This chapter delves deeper into advanced patterns and tools for managing complex application state within React applications, moving beyond basic component-level state. It addresses the challenges of 'prop drilling' and introduces the Context API as a built-in solution for global state distribution. Furthermore, it covers external state management libraries like Redux, which are essential for larger, more intricate applications requiring predictable state containers and robust debugging tools. By mastering these techniques, learners will be able to efficiently manage data flow across large component trees, optimize application performance, and build highly maintainable and scalable front-end systems, preparing them for building enterprise-level applications.",
-      time: "2h 15m",
-      isCompleted: false,
-      content: [
-        "Context API: The React Context API provides a way to pass data through the component tree without having to pass props down manually at every level (a problem known as 'prop drilling'). It is designed for sharing 'global' data, such as authenticated user information, theme settings, or preferred language, that can be considered 'global' for a tree of React components. While not a full-fledged state management solution like Redux, it's perfect for low-frequency updates and simple data sharing. To use it, you create a Context using `React.createContext()`, then use a `Provider` to make the context value available to components below it, and consume it with the `useContext` Hook. For example, a theme context can store the current theme (light/dark) and be accessed by any deeply nested component without passing the theme prop through every intermediate component.",
-        "Introduction to Redux: Redux is a predictable state container for JavaScript applications, often used with React to manage application-wide state, especially in large and complex applications. It centralizes your application's state into a single immutable 'store', making state changes predictable and debuggable. Key concepts include actions (plain objects describing what happened), reducers (pure functions that take the current state and an action to return the new state), and the store (which holds the application state). Redux Toolkit is the official, opinionated way to write Redux logic, simplifying common tasks and reducing boilerplate. For instance, in an e-commerce application, Redux can manage the shopping cart state, user authentication status, and product lists, ensuring consistency across different parts of the application.",
-        "React Router for SPA Navigation: React Router is a popular declarative routing library for React applications, enabling client-side routing within Single-Page Applications (SPAs). SPAs load a single HTML page and dynamically update its content, providing a smoother user experience that mimics traditional multi-page applications without full page reloads. React Router uses components like `BrowserRouter`, `Routes`, `Route`, and `Link` to define navigation paths and render specific components based on the URL. Understanding nested routes, URL parameters, and programmatically navigating is crucial. For example, in a blog application, `React Router` allows users to navigate between a list of posts (`/posts`) and individual post details (`/posts/:id`) without refreshing the entire page, providing a seamless Browse experience."
-      ]
-    },
-    {
-      id: 104,
-      chapterName: "API Interaction & Data Handling",
-      description: "This chapter focuses on the crucial aspect of connecting front-end applications with back-end services, covering how to fetch, send, and manage data effectively. Understanding API interaction is fundamental because most modern web applications rely heavily on external data sources and services. You will learn about various methods for making HTTP requests, handling different response types, and implementing secure communication patterns. Mastering these skills is essential for building dynamic and data-driven applications that can interact seamlessly with server-side logic and databases, ensuring your applications are robust, reliable, and functional in a real-world environment.",
-      time: "1h 45m",
-      isCompleted: false,
-      content: [
-        "Fetching Data (Fetch API & Axios): Fetching data is a core task for dynamic web applications, enabling them to retrieve or send information to and from a server. The native Fetch API provides a powerful and flexible way to make network requests, built on Promises for handling asynchronous operations. Axios is a popular third-party JavaScript library that offers a more convenient and feature-rich interface for making HTTP requests, including built-in error handling, request/response interception, and automatic JSON transformation. Both tools are essential for interacting with RESTful APIs, allowing applications to display dynamic content, submit forms, or update user profiles. For example, using `axios.get('/api/products')` to retrieve a list of products from a backend endpoint is a common pattern in e-commerce applications.",
-        "Working with RESTful APIs: RESTful APIs (Representational State Transfer) are a standardized architectural style for building web services, providing a stateless, client-server communication model over HTTP. Understanding REST principles is vital for interacting with the vast majority of modern web backends. Key concepts involve using standard HTTP methods like GET (retrieve data), POST (create data), PUT (update entire resource), PATCH (update partial resource), and DELETE (remove resource), along with meaningful URL endpoints and proper status codes. These APIs are the backbone of data exchange in distributed systems. For example, managing a user's to-do list might involve sending a POST request to `/api/todos` to create a new task, a GET request to retrieve all tasks, and a DELETE request to remove a completed task, all following REST conventions.",
-        "Authentication & Authorization: Authentication and authorization are critical security concepts for protecting sensitive data and ensuring only authorized users can access specific resources in a web application. Authentication verifies a user's identity (e.g., via username/password), while authorization determines what an authenticated user is allowed to do. Common tools and technologies include JSON Web Tokens (JWTs), OAuth 2.0, session-based authentication (cookies), and API keys. Implementing these involves sending credentials to a server, receiving a token or session ID, and then including that token in subsequent requests to access protected routes or data. For example, after a user logs in, the server might return a JWT that the front-end application stores and sends with every request to access personalized content like their profile information or order history, ensuring secure access to their data."
-      ]
-    },
-    {
-      id: 105,
-      chapterName: "Front-End Performance Optimization",
-      description: "This chapter is dedicated to the critical discipline of optimizing front-end performance, which is essential for delivering a fast, responsive, and satisfying user experience. In today's competitive web landscape, slow-loading applications can lead to high bounce rates and reduced user engagement. You will learn various techniques to reduce load times, improve rendering efficiency, and manage resources effectively. Mastering performance optimization not only enhances user satisfaction but also improves SEO rankings and reduces server costs, making it a vital skill for any professional front-end developer to build high-quality, production-ready web applications.",
-      time: "1h 30m",
-      isCompleted: false,
-      content: [
-        "Code Splitting & Lazy Loading: Code splitting is a technique that divides your application's JavaScript bundle into smaller, more manageable chunks, which are then loaded on demand or in parallel. This significantly reduces the initial load time of a web application by only delivering the code necessary for the user's current view. Lazy loading is the practice of loading these chunks only when they are actually needed, typically through dynamic imports. Build tools like Webpack and Vite natively support code splitting. Key concepts include understanding dynamic `import()` statements and setting up routing to trigger component-specific bundle loading. For example, an e-commerce site might lazy load the checkout page's JavaScript bundle only when the user clicks the 'Proceed to Checkout' button, preventing unnecessary downloads on the initial page load.",
-        "Image Optimization & WebP: Image optimization involves reducing the file size of images without significantly compromising their visual quality, which directly impacts page load times. Images often constitute the largest part of a webpage's total download size. Tools for this include image compression software, responsive image techniques using `srcset` and the `<picture>` element in HTML, and serving images in modern, efficient formats like WebP or AVIF. WebP, for instance, offers superior compression compared to JPEG and PNG. Key concepts involve understanding different image formats, using lazy loading for off-screen images, and properly sizing images for various devices. For example, serving a banner image in WebP format and using `srcset` to provide different resolutions for mobile and desktop users ensures fast loading and optimal display across all devices.",
-        "Memoization & Caching: Memoization is an optimization technique that stores the results of expensive function calls and returns the cached result when the same inputs occur again, preventing redundant computations. In React, `React.memo` (for components) and the `useMemo` and `useCallback` hooks (for values and functions respectively) are used to prevent unnecessary re-renders of components or recalculations of values. Caching, more broadly, involves storing data in a temporary location (like browser storage or a service worker) so future requests for that data can be served faster. Key concepts include understanding when re-renders occur and identifying computationally intensive operations. For example, if you have a component that renders a complex chart based on props, using `React.memo` can prevent it from re-rendering if its props haven't changed, significantly boosting performance.",
-        "Bundle Analysis & Minification: Bundle analysis is the process of inspecting the size and composition of your JavaScript bundles to identify areas for optimization, such as large libraries or duplicated code. Tools like Webpack Bundle Analyzer provide visual representations of your bundle's contents, helping developers pinpoint inefficiencies. Minification is the process of removing all unnecessary characters (like whitespace, comments, and long variable names) from source code without changing its functionality, resulting in smaller file sizes. Build tools like Webpack or Vite automatically perform minification using plugins like Terser. These techniques are crucial for reducing the overall size of your application, leading to faster download times and improved user experience, especially on slower network connections. For example, analyzing a bundle might reveal that a seldom-used utility library is adding significantly to its size, prompting developers to find a lighter alternative or implement tree-shaking."
-      ]
-    },
-    {
-      id: 106,
-      chapterName: "Testing Front-End Applications",
-      description: "This chapter introduces the fundamental principles and practices of testing front-end applications, a critical discipline for building robust, reliable, and maintainable software. Testing ensures that your application behaves as expected, prevents regressions, and facilitates confident refactoring and feature development. You will explore various testing methodologies, including unit testing for individual components and functions, integration testing to verify interactions between different parts, and end-to-end testing to simulate full user flows. Mastering these testing strategies is indispensable for delivering high-quality web applications, reducing bugs in production, and collaborating effectively within a development team, leading to more stable and trustworthy software.",
-      time: "1h 20m",
-      isCompleted: false,
-      content: [
-        "Unit Testing with Jest: Unit testing involves testing individual, isolated units or components of your code, such as a single function, a small module, or a React component in isolation. It is important because it allows developers to quickly identify and fix bugs at a granular level, provides immediate feedback on code changes, and promotes modular, testable code. Jest is a widely used JavaScript testing framework, developed by Meta (Facebook), known for its simplicity, speed, and built-in features like assertion libraries and mocking capabilities. Key concepts include writing test suites, test cases, using `expect` for assertions, and mocking dependencies. For example, you would write a unit test for a utility function that calculates a shopping cart total to ensure it correctly handles various item prices and quantities, independently of the entire application.",
-        "Component Testing with React Testing Library: Component testing focuses on testing React components in a way that mimics how users interact with them, rather than testing their internal implementation details. This approach, championed by React Testing Library (RTL), is highly valuable because it leads to more robust tests that are less prone to breaking with refactors and more aligned with actual user behavior. RTL provides a set of utilities that encourage querying the DOM in the same way a user would (e.g., `getByText`, `getByRole`). Key concepts involve rendering components into a test environment, simulating user events like clicks or typing, and asserting on the visible output. For instance, you would use RTL to test a login form component by simulating typing into input fields and clicking the submit button, then asserting that a success message appears or an error is displayed.",
-        "End-to-End Testing with Cypress: End-to-end (E2E) testing simulates full user flows through an entire application, from the user interface down to the backend services. It is crucial for verifying that all parts of the system—front-end, back-end, and databases—work together correctly. Cypress is a popular, developer-friendly E2E testing framework designed for the modern web, offering a fast, reliable, and interactive testing experience. It provides features like automatic waiting, time travel debugging, and real-time reloads. Key concepts involve scripting user journeys, interacting with DOM elements, and making assertions based on the application's state or appearance. For example, an E2E test might simulate a user registering, logging in, adding an item to a cart, and completing a purchase, ensuring the entire critical path of an e-commerce application functions correctly."
-      ]
-    },
-    {
-      id: 107,
-      chapterName: "Build Tools, Tooling & Deployment",
-      description: "This chapter covers the essential tools and processes that underpin a modern front-end development workflow, from setting up a project to deploying it live. Understanding build tools is crucial because they automate tasks like code bundling, transpilation, and optimization, which are indispensable for writing efficient and production-ready applications. You will learn about popular bundlers, code quality tools, and various deployment strategies, including continuous integration and continuous deployment (CI/CD). Mastering these concepts will enable you to streamline your development process, ensure code quality, and confidently publish your web applications to the internet, bridging the gap between development and production environments.",
-      time: "1h 10m",
-      isCompleted: false,
-      content: [
-        "Webpack & Vite for Bundling: Webpack and Vite are leading module bundlers that combine multiple JavaScript, CSS, and other asset files into optimized bundles for web browsers. They are critical because browsers can't natively understand all modern JavaScript features (like JSX or ES Modules for older browsers) or CSS preprocessors, and bundling reduces the number of HTTP requests. Webpack, a highly configurable and powerful tool, offers extensive plugin support for various transformations, while Vite is a newer, faster build tool leveraging native ES Modules during development for instant server start and hot module replacement. Key concepts include understanding entry points, output, loaders (for processing different file types), and plugins (for optimization tasks). For example, a bundler compiles all your React components and their CSS files into a few optimized JavaScript and CSS files, ready for production, greatly enhancing load performance.",
-        "Linters & Formatters (ESLint, Prettier): Linters and formatters are indispensable tools for maintaining code quality, consistency, and readability across a project, especially in team environments. ESLint is a highly configurable static code analysis tool that identifies problematic patterns in JavaScript code, helping to enforce coding standards and catch errors early. Prettier is an opinionated code formatter that automatically reformats code to ensure consistent style across the entire codebase, eliminating debates over stylistic preferences. Integrating these tools into a development workflow (often via IDE extensions or pre-commit hooks) saves time and reduces manual code review efforts. For example, ESLint might warn about an unused variable or a missing semicolon, while Prettier automatically formats your `if` statements or array declarations to conform to a predefined style, ensuring all team members write code that looks and behaves consistently.",
-        "Deployment Strategies (Netlify, Vercel): Deployment strategies involve the methods and services used to publish your front-end web application to a live server, making it accessible to users worldwide. Netlify and Vercel are popular serverless platforms that simplify the deployment process, offering features like continuous deployment (automatically deploying on every code commit), global CDNs (Content Delivery Networks for faster delivery), and custom domain support. These services are invaluable for single-page applications (SPAs) and static sites, providing a highly scalable and maintenance-free hosting solution. Key concepts include connecting your Git repository, setting up build commands, and configuring environment variables. For instance, connecting a React project's GitHub repository to Netlify means that every `git push` to the main branch automatically triggers a new build and deployment, providing instant updates to your live site.",
-        "Introduction to CI/CD for Front-End: Continuous Integration (CI) and Continuous Delivery/Deployment (CD) are practices that automate the stages of your software development lifecycle, from code commit to deployment. CI involves automatically building and testing code changes whenever developers commit to a shared repository, ensuring early detection of integration issues. CD extends CI by automatically deploying validated changes to a staging or production environment. Tools like GitHub Actions, GitLab CI/CD, and Jenkins are used to set up these pipelines. The importance lies in accelerating the development cycle, improving code quality, and reducing human error. For example, a CI/CD pipeline for a front-end project might automatically run ESLint checks, Jest unit tests, and build the production bundle on every pull request, and if all checks pass, it could then automatically deploy the updated application to Vercel."
-      ]
-    }
-  ]
+
+    tabs: [
+      { id: "overview", label: "Overview" },
+      { id: "what-you-learn", label: "What you'll learn" },
+      { id: "requirement", label: "Requirement" },
+      { id: "chapters", label: "Chapters" },
+      { id: "resources", label: "Additional Resources" },
+    ],
+
+    chapters: [
+      {
+        id: "ch_01",
+        title: "Tool Instalation",
+        lecturesCount: 4,
+        totalDuration: "51m",
+        progress: { completedLectures: 1, percentage: 25 }, // 1/4 => 25%
+      },
+      {
+        id: "ch_02",
+        title: "Responsive Design",
+        lecturesCount: 1,
+        totalDuration: "12m",
+        progress: { completedLectures: 0, percentage: 0 },
+      },
+
+      {
+        id: "ch_03",
+        title: "Introduction to JavaScript",
+        lecturesCount: 2,
+        totalDuration: "1h 14m",
+        progress: { completedLectures: 1, percentage: 50 },
+      },
+
+      {
+        id: "ch_04",
+        title: "CSS Flexbox & Grid",
+        lecturesCount: 2,
+        totalDuration: "1h 30m",
+        progress: { completedLectures: 0, percentage: 0 },
+      },
+
+      {
+        id: "ch_05",
+        title: "Forms and User Input",
+        lecturesCount: 2,
+        totalDuration: "27m",
+        progress: { completedLectures: 1, percentage: 50 }, // 1/2 done
+      },
+
+      {
+        id: "ch_06",
+        title: "Light and Dark Mode",
+        lecturesCount: 1,
+        totalDuration: "29m",
+        progress: { completedLectures: 0, percentage: 0 },
+      
+      },
+
+      {
+        id: "ch_07",
+        title: "Debugging & Troubleshooting",
+        lecturesCount: 2,
+        totalDuration: "45m",
+        progress: { completedLectures: 0, percentage: 0 },
+    
+      },
+
+      {
+        id: "ch_08",
+        title: "Responsive Utilities & Helpers",
+        lecturesCount: 2,
+        totalDuration: "40m",
+        progress: { completedLectures: 0, percentage: 0 },
+       
+      },
+
+      {
+        id: "ch_09",
+        title: "Performance & Optimization",
+        lecturesCount: 2,
+        totalDuration: "30m",
+        progress: { completedLectures: 0, percentage: 0 },
+       
+      },
+
+      {
+        id: "ch_10",
+        title: "Final: Study Case",
+        lecturesCount: 2,
+        totalDuration: "Unlimited",
+        progress: { completedLectures: 0, percentage: 0 },
+        
+      },
+    ],
+  },
 };
 
-export default courseData;
+export default courseApiMock;

@@ -1,5 +1,5 @@
 import useRegister from "../../hooks/useRegister";
-import FormInput from "./FormInput";
+import FormInput from "../ui/FormInput";
 
 const RegisterForm = () => {
   const { formik, isPending } = useRegister()

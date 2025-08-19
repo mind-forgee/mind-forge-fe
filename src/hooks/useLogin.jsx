@@ -1,24 +1,25 @@
 import { useMutation } from '@tanstack/react-query'
 import { useFormik } from 'formik'
+import axiosInstance from '../lib/axios'
 import { toast } from 'sonner'
-import { Navigate, useNavigate } from 'react-router-dom'
-import { login } from '../api/auth/login'
+import { useNavigate } from 'react-router-dom'
 
 const useLogin = () => {
     const navigate = useNavigate()
+    const handleLoginUser = async (body) => {
+        const response = await axiosInstance.post('/auth/login', body, { withCredentials: true })
+        return response.data
+    }
 
-    const { mutate, isPending, } = useMutation({
-        mutationFn: (body) => login(body),
+    const { mutate, isPending } = useMutation({
+        mutationFn: (body) => handleLoginUser(body),
         onError: (err) => {
             console.log(err)
             toast.error("Failed to login")
         },
-        onSuccess: (res) => {
+        onSuccess: () => {
             toast.success('Redirecting...')
-            if (res?.data?.selected_course) {
-                return navigate('/dashboard')
-            }
-            return navigate('/success')
+            navigate('/success')
         }
     })
 
@@ -34,7 +35,7 @@ const useLogin = () => {
 
     return {
         formik,
-        isPending,
+        isPending
     }
 }
 
