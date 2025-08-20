@@ -11,7 +11,7 @@ export default function CourseTabs({ course }) {
   ];
 
   return (
-    <div className="rounded-lg shadow w-full">
+    <div className="rounded-lg shadow w-full h-full">
       {/* Tab buttons */}
       <div className="grid grid-cols-3 text-sm font-medium">
         {tabs.map((tab) => (
@@ -30,7 +30,7 @@ export default function CourseTabs({ course }) {
       </div>
 
       {/* Tab content */}
-      <div className="p-4 text-gray-800 bg-white text-sm">
+      <div className="p-4 text-gray-800 bg-white text-sm h-full">
         {activeTab === "overview" && (
           <div>
             <h3 className="font-semibold text-lg mb-2">About this course</h3>

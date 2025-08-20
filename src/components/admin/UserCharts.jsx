@@ -1,20 +1,19 @@
-import React from "react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
-const UsersChart = ({ data }) => {
+export default function UserChart({ data }) {
   return (
-    <div className="bg-white p-4 rounded-2xl shadow-md">
-      <h3 className="font-semibold mb-2">Users</h3>
-      <ResponsiveContainer width="100%" height={200}>
+    <div className="bg-white shadow-md rounded-2xl p-4 w-full h-80">
+      <h2 className="text-lg font-semibold mb-4">User Growth</h2>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
-          <XAxis dataKey="month" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          <XAxis dataKey="date" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="users" stroke="#10b981" strokeWidth={2} />
+          <Legend />
+          <Line type="monotone" dataKey="count" stroke="#10b981" strokeWidth={2} dot={{ r: 6 }} />
         </LineChart>
       </ResponsiveContainer>
     </div>
   );
-};
-
-export default UsersChart;
+}

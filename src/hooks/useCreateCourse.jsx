@@ -10,7 +10,7 @@ const useCreateCourse = () => {
     mutationFn: (body) => createCourse(body),
     onSuccess: (res) => {
       toast.success("Redirecting...");
-      console.log(res)
+      console.log(res);
       return navigate("/dashboard/course");
     },
     onError: (err) => {

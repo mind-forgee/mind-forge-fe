@@ -1,50 +1,18 @@
-import { useState } from "react";
-
-const AddTopicForm = ({ onSubmit }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    image: "",
-    description: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+import useCreateTopic from "../../hooks/useCreateTopic";
 
 
-    const payload = {
-      id: Date.now(), 
-      ...formData,
-    };
+const AddTopicForm = () => {
 
-    onSubmit(payload);
-    setFormData({ name: "", image: "", description: "" });
-  };
+  const { formik, isPending } = useCreateTopic();
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={formik.handleSubmit} className="space-y-4">
       <div>
         <label className="text-sm font-medium">Name</label>
         <input
           name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full border rounded-lg p-2 mt-1"
-          required
-        />
-      </div>
-      <div>
-        <label className="text-sm font-medium">Image URL</label>
-        <input
-          name="image"
-          value={formData.image}
-          onChange={handleChange}
+          value={formik.values.name}
+          onChange={formik.handleChange}
           className="w-full border rounded-lg p-2 mt-1"
           required
         />
@@ -53,8 +21,8 @@ const AddTopicForm = ({ onSubmit }) => {
         <label className="text-sm font-medium">Description</label>
         <textarea
           name="description"
-          value={formData.description}
-          onChange={handleChange}
+          value={formik.values.description}
+          onChange={formik.handleChange}
           rows="3"
           className="w-full border rounded-lg p-2 mt-1"
           required
@@ -64,7 +32,7 @@ const AddTopicForm = ({ onSubmit }) => {
         type="submit"
         className="bg-secondary hover:bg-primary text-white px-4 py-2 rounded-lg w-full"
       >
-        Save
+        {isPending ? "Creating..." : "Create Topic"}
       </button>
     </form>
   );
