@@ -9,7 +9,7 @@ import LoadingSpinner from "../../components/ui/LoadingSpinner";
 
 const Dashboard = () => {
     const { data, isLoading } = useGetUserCourse();
-
+console.log(data)
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">

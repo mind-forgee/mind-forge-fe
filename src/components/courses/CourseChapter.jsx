@@ -21,11 +21,10 @@ export default function CourseChapters({ chapters }) {
           >
             <div className="flex items-center gap-3 flex-1">
               <div
-                className={`w-5 h-5 flex items-center justify-center border rounded ${
-                  chapter.is_completed ? "bg-primary text-white" : ""
-                }`}
+                className={`w-5 h-5 flex items-center justify-center border rounded ${chapter.progress.at(0).is_done ? "bg-primary text-white" : ""
+                  }`}
               >
-                {chapter.is_completed && <Check size={14} />}
+                {chapter.progress.at(0).is_done && <Check size={14} />}
               </div>
               <span className="font-normal text-sm text-gray-800">
                 {chapter.title}

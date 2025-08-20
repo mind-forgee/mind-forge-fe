@@ -8,14 +8,14 @@ const useCreateCourse = () => {
   const navigate = useNavigate();
   const { mutate: handleGetCourse, isPending } = useMutation({
     mutationFn: (body) => createCourse(body),
-
+    onSuccess: (res) => {
+      toast.success("Redirecting...");
+      console.log(res)
+      return navigate("/dashboard/course");
+    },
     onError: (err) => {
       console.log(err);
       toast.error("Failed to create course");
-    },
-    onSuccess: (res) => {
-      toast.success("Redirecting...");
-      return navigate("/dashboard");
     },
   });
 
