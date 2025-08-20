@@ -37,8 +37,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/",
-    element: <ProtectedRoutes />,
+    element: <ProtectedRoutes allowedRoles={["user"]} />,
     children: [
       {
         path: "/",
@@ -77,24 +76,29 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin",
-    element: <AdminLayout />,
+    element: <ProtectedRoutes allowedRoles={["admin"]} />,
     children: [
       {
-        path: "overview",
-        element: <Overview />,
-      },
-      {
-        path: "courses",
-        element: <ManageCourses />,
-      },
-      {
-        path: "topics",
-        element: <Topics />,
-      },
-      {
-        path: "blog",
-        element: <Blog />,
+        path: "/admin",
+        element: <AdminLayout />,
+        children: [
+          {
+            path: "overview",
+            element: <Overview />,
+          },
+          {
+            path: "courses",
+            element: <ManageCourses />,
+          },
+          {
+            path: "topics",
+            element: <Topics />,
+          },
+          {
+            path: "blog",
+            element: <Blog />,
+          },
+        ],
       },
     ],
   },

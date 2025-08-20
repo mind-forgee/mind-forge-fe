@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { useFormik } from "formik"
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from "sonner"
 
 import { createTopic } from "../api/topics/createTopic"
 
 const useCreateTopic = () => {
+
+    const queryClient = useQueryClient()
+
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -24,6 +27,7 @@ const useCreateTopic = () => {
         },
         onSuccess: () => {
             toast.success("Topic created successfully!")
+            queryClient.invalidateQueries(["topics"])
             formik.handleReset()
         },
     })

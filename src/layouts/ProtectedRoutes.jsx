@@ -1,21 +1,28 @@
-import { Outlet, useNavigate } from "react-router-dom"
-import { useGetUser } from "../hooks/useGetUser"
+import { Outlet, Navigate, useLocation } from "react-router-dom";
+import { useGetUser } from "../hooks/useGetUser";
+import LoadingSpinner from "../components/ui/LoadingSpinner";
 
-const ProtectedRoutes = () => {
-    const navigate = useNavigate()
-    const { data: user, isLoading } = useGetUser()
-    if (isLoading) {
-        return
-    }
+const ProtectedRoutes = ({ allowedRoles }) => {
+  const location = useLocation();
+  const { data: user, isLoading } = useGetUser();
 
-    if (!isLoading && !user) {
-        return navigate('/login')
-    }
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
-    return <Outlet />
+  if (!user) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
 
-}
+  if (allowedRoles && !allowedRoles.includes(user.role)) {
+    return <Navigate to="/" replace />;
+  }
 
+  return <Outlet />;
+};
 
-
-export default ProtectedRoutes
+export default ProtectedRoutes;

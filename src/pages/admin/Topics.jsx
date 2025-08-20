@@ -24,7 +24,7 @@ const Topics = () => {
         </div>
       ) : (
         <TopicsTable
-          columns={["ID", "Name", "Description"]}
+          columns={["ID", "Name", "Description", "Action"]}
           data={topics}
           onAdd={() => setIsOpen(true)}
         />
