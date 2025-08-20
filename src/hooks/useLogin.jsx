@@ -16,7 +16,7 @@ const useLogin = () => {
     onSuccess: (res) => {
       toast.success("Redirecting...");
 
-      const selectedCourse = res?.data?.user?.selected_course;
+      const selectedCourse = res?.data?.selected_course;
 
       if (selectedCourse) {
         return navigate("/dashboard/course");
