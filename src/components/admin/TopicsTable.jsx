@@ -30,13 +30,13 @@ const TopicsTable = ({ columns, data, onAdd }) => {
             >
               <td className="p-3">{topic.id}</td>
               <td className="p-3">{topic.name}</td>
-              <td className="p-3">
+              {/* <td className="p-3">
                 <img
                   src={topic.image}
                   alt={topic.name}
                   className="w-12 h-12 rounded object-cover"
                 />
-              </td>
+              </td> */}
               <td className="p-3 max-w-md truncate">
                 {topic.description}
               </td>

@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <section className='py-12 min-h-screen flex items-center md:px-12 mt-16'>
+      <section className='py-12 min-h-screen flex items-center md:px-12 mt-12'>
         <Hero course={course} />
       </section>
       <section className='py-12 min-h-screen flex items-center md:px-12 mt-16'>

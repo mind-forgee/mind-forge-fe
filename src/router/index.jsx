@@ -19,9 +19,8 @@ import Blog from "../pages/admin/Blog";
 import ManageCourses from "../pages/admin/ManageCourses";
 import Topics from "../pages/admin/Topics";
 import ProtectedRoutes from "../layouts/ProtectedRoutes";
-
-
-
+import ChapterLayout from "../layouts/ChapterLayout";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -42,28 +41,40 @@ export const router = createBrowserRouter([
     element: <ProtectedRoutes />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <UserLayout />,
         children: [
           {
             path: "dashboard",
-            element: <Dashboard />
+            element: <DashboardLayout />,
+            children: [
+              {
+                path: "course",
+                element: <Dashboard />,
+              },
+              {
+                path: "profile",
+                element: <Profile />,
+              },
+            ],
           },
           {
-            path: "profile",
-            element: <Profile />
+            path: "chapter",
+            element: <ChapterLayout />,
+            children: [
+              {
+                path: ":chapterId",
+                element: <ChapterDetail />,
+              },
+              {
+                path: "study-case",
+                element: <StudyCase />,
+              },
+            ],
           },
-          {
-            path: "chapter/:chapterId",
-            element: <ChapterDetail />
-          },
-          {
-            path: "study-case",
-            element: <StudyCase />
-          },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   {
     path: "/admin",
@@ -71,20 +82,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "overview",
-        element: <Overview />
+        element: <Overview />,
       },
       {
         path: "courses",
-        element: <ManageCourses />
+        element: <ManageCourses />,
       },
       {
         path: "topics",
-        element: <Topics />
+        element: <Topics />,
       },
       {
         path: "blog",
-        element: <Blog />
+        element: <Blog />,
       },
-    ]
-  }
+    ],
+  },
 ]);
