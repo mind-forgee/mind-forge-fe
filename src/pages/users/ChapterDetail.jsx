@@ -7,11 +7,13 @@ import MarkdownRenderer from "../../utils/MarkdownRenderer";
 import CourseChapters from "../../components/courses/CourseChapter";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import StudyCase from "./StudyCase";
+import useCompleteChapter from "../../hooks/useCompleteChapter";
 
 export default function ChapterDetail() {
   const { chapterId } = useParams();
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { handleCompleteChapter, isPending } = useCompleteChapter();
 
   const currentId = String(chapterId);
   const { data, isLoading } = useGetUserCourse();
@@ -43,7 +45,11 @@ export default function ChapterDetail() {
 
   const handleNextChapter = () => {
     if (nextChapter) {
-      navigate(`/chapter/${nextChapter.id}`);
+      handleCompleteChapter(chapter.id, {
+        onSuccess: () => {
+          navigate(`/chapter/${nextChapter.id}`);
+        },
+      });
     }
   };
 
@@ -57,6 +63,9 @@ export default function ChapterDetail() {
     <main className="grid grid-cols-1 md:grid-cols-3 gap-6 min-h-screen px-4 md:px-12 pt-24 relative">
       <div className="md:col-span-2 overflow-y-auto pr-0 md:pr-4">
         <h1 className="text-2xl font-bold mb-4">{chapter.title}</h1>
+        {chapter.video_url_embed && (
+          <iframe src={chapter.video_url_embed} frameborder="0" className="w-full aspect-video mb-3"></iframe>
+        )}
         <p className="text-gray-600 mb-4 text-justify">{chapter.description}</p>
         {chapter.content && (
           <div className="text-gray-700 text-justify leading-relaxed">
@@ -76,7 +85,7 @@ export default function ChapterDetail() {
           )}
           {nextChapter && (
             <SecondaryButton
-              children="Next Chapter"
+              children={isPending ? "Loading..." : "Next Chapter"}
               onclick={handleNextChapter}
             />
           )}
@@ -121,7 +130,7 @@ export default function ChapterDetail() {
             )}
             {nextChapter && (
               <SecondaryButton
-                children="Next Chapter"
+                children={isPending ? "Loading..." : "Next Chapter"}
                 onclick={handleNextChapter}
               />
             )}

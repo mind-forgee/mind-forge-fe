@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, BookOpen, User } from "lucide-react"; // ✅ Tambahkan ikon
+import { Menu, X, BookOpen, User } from "lucide-react";
+import UserInfo from "../../components/ui/UserInfo";
 
 const menuItems = [
   { id: "course", label: "Course", path: "/dashboard/course", icon: BookOpen },
@@ -43,9 +44,9 @@ const DashboardNavbar = () => {
                 </Link>
               );
             })}
+            <UserInfo />
           </div>
 
-          {/* Mobile Button */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
@@ -57,7 +58,7 @@ const DashboardNavbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu with Animation */}
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -89,6 +90,7 @@ const DashboardNavbar = () => {
                 );
               })}
             </div>
+            <UserInfo />
           </motion.div>
         )}
       </AnimatePresence>

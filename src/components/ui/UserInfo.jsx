@@ -25,7 +25,7 @@ const UserInfo = () => {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative text-light" ref={dropdownRef}>
       {/* Trigger */}
       <div
         className="flex items-center justify-between gap-2 cursor-pointer select-none px-2 py-1 rounded-md hover:bg-secondary/30 transition"

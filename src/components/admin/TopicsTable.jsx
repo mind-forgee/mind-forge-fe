@@ -23,12 +23,12 @@ const TopicsTable = ({ columns, data, onAdd }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((topic) => (
+          {data.map((topic, index) => (
             <tr
               key={topic.id}
               className="hover:bg-gray-50 transition text-sm"
             >
-              <td className="p-3">{topic.id}</td>
+              <td className="p-3">{index + 1}</td>
               <td className="p-3">{topic.name}</td>
               {/* <td className="p-3">
                 <img

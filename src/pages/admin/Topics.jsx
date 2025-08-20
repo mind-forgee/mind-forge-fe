@@ -7,6 +7,7 @@ import LoadingSpinner from "../../components/ui/LoadingSpinner";
 
 const Topics = () => {
   const { data: topics, isLoading } = useGetAllTopics();
+  console.log(topics);
   const [data, setData] = useState(topics);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +18,6 @@ const Topics = () => {
 
   return (
     <main className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Topics</h1>
       {isLoading ? (
         <div className="min-h-screen flex justify-center items-center">
           <LoadingSpinner  />
@@ -25,7 +25,7 @@ const Topics = () => {
       ) : (
         <TopicsTable
           columns={["ID", "Name", "Description"]}
-          data={data}
+          data={topics}
           onAdd={() => setIsOpen(true)}
         />
       )}
