@@ -10,6 +10,7 @@ import {
   LogOut,
   X,
 } from "lucide-react";
+import { useLogout } from "../../hooks/useLogout";
 
 const sidebarItems = [
   { name: "Overview", icon: LayoutDashboard, path: "/admin/overview" },
@@ -19,12 +20,12 @@ const sidebarItems = [
   { name: "Account", icon: Settings, path: "/admin/account" },
   { name: "Corporate", icon: Building2, path: "/admin/corporate" },
   { name: "Blog", icon: FileText, path: "/admin/blog" },
-  { name: "Log Out", icon: LogOut, path: "/logout" },
 ];
 
 export default function Sidebar({ onClose }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { mutate: logout } = useLogout();
 
   return (
     <aside className="h-screen w-56 bg-secondary text-white flex flex-col p-4">
@@ -65,7 +66,12 @@ export default function Sidebar({ onClose }) {
               <span className="text-sm font-medium">{item.name}</span>
             </button>
           );
+          
         })}
+        <button onClick={logout} className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-300 ease-in-out hover:bg-emerald-900 hover:scale-105">
+          <span className="text-secondary bg-white p-2 rounded-md"><LogOut size={20} /></span>
+          <span className="text-sm font-medium">Log Out</span>
+        </button>
       </nav>
     </aside>
   );

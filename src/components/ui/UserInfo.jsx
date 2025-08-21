@@ -68,7 +68,15 @@ const UserInfo = () => {
           >
             <ul className="py-1">
               <li className="px-4 py-2 hover:bg-secondary cursor-pointer truncate">
-                <a href="/profile">{user?.email || "No email"}</a>
+                <a
+                  href={
+                    user?.role === "admin"
+                      ? "/admin/overview"
+                      : "/dashboard/course"
+                  }
+                >
+                  {user?.email || "No email"}
+                </a>
               </li>
               <li className="px-4 py-2 hover:bg-secondary cursor-pointer text-red-500">
                 <button onClick={() => logout()} className="w-full text-left">

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import { toast } from "sonner";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { login } from "../api/auth/login";
 
 const useLogin = () => {
@@ -10,17 +10,23 @@ const useLogin = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (body) => login(body),
     onError: (err) => {
-      console.log(err);
+      console.error("❌ Login error:", err);
       toast.error("Failed to login");
     },
     onSuccess: (res) => {
       toast.success("Redirecting...");
 
+      const role = res?.data?.role;
       const selectedCourse = res?.data?.selected_course;
+
+      if (role === "admin") {
+        return navigate("/admin/overview");
+      }
 
       if (selectedCourse) {
         return navigate("/dashboard/course");
       }
+
       return navigate("/select-course");
     },
   });
@@ -30,8 +36,8 @@ const useLogin = () => {
       email: "",
       password: "",
     },
-    onSubmit: (value) => {
-      mutate(value);
+    onSubmit: (values) => {
+      mutate(values);
     },
   });
 

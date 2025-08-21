@@ -28,7 +28,7 @@ export default function CourseChapters({ chapters }) {
                 {chapter.progress.at(0).is_done && <Check size={14} />}
               </div>
 
-              {/* Title truncated */}
+ 
               <span className="font-normal text-xs text-gray-800 truncate block min-w-0">
                 {chapter.title}
               </span>

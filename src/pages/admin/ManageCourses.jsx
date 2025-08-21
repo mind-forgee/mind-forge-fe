@@ -12,7 +12,7 @@ const ManageCourses = () => {
         <div>Loading...</div>
       ) : (
         <CoursesTable
-          columns={["ID", "Name", "Difficulty", "Description", "Action"]}
+          columns={["No", "Name", "Difficulty", "Description", "Action"]}
           data={courses}
         />
       )}

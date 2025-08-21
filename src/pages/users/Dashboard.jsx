@@ -5,7 +5,8 @@ import CourseTabs from "../../components/courses/CourseTabs";
 import { useGetUserCourse } from "../../hooks/useGetUserCourse";
 import SecondaryButton from "../../components/ui/SecondaryButton";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
-import { Baby, Play, TrendingUp, Zap } from "lucide-react";
+import {  Play } from "lucide-react";
+import { difficultyIcons } from "../../config/difficultyIcon.jsx";
 
 const Dashboard = () => {
   const { data, isLoading } = useGetUserCourse();
@@ -26,11 +27,7 @@ const Dashboard = () => {
   const videoChaptersCount = data.course.chapters.filter(
     (chapter) => chapter.video_url && chapter.video_url.trim() !== ""
   ).length;
-  const difficultyIcons = {
-    beginner: <Baby size={14} className="text-green-600" />,
-    intermediate: <TrendingUp size={14} className="text-yellow-600" />,
-    advanced: <Zap size={14} className="text-red-600" />,
-  };
+
 
   return (
     <>
