@@ -12,13 +12,11 @@ export default function CourseForm({
   step,
   setStep,
   selectedTopic,
-  setSelectedTopic
+  setSelectedTopic,
 }) {
-  const { handleGetCourse, isPending } = useCreateCourse()
+  const { handleGetCourse, isPending } = useCreateCourse();
   const [difficulty, setDifficulty] = useState("");
   const { data: topics } = useGetAllTopics();
-
-
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
@@ -29,18 +27,17 @@ export default function CourseForm({
     (step === 3 && difficulty);
 
   const title =
-    step === 1 ? "Choose Your Course" : selectedTopic?.name || "Choose Your Course";
-
+    step === 1
+      ? "Choose Your Course"
+      : selectedTopic?.name || "Choose Your Course";
 
   const handleSubmit = () => {
     const payload = {
       topic_id: selectedTopic?.id,
-      difficulty: difficulty
+      difficulty: difficulty,
     };
 
-    handleGetCourse(payload)
-
-
+    handleGetCourse(payload);
   };
 
   return (
@@ -96,7 +93,7 @@ export default function CourseForm({
       <div className="flex items-center gap-x-7 mt-16">
         <button
           onClick={prevStep}
-          disabled={step === 1}
+          disabled={step === 1 || isPending} // 🔥 disable jika di step 1 atau AI generate
           className="bg-accent px-12 py-2 rounded disabled:opacity-50 text-dark"
         >
           Previous
@@ -104,7 +101,7 @@ export default function CourseForm({
         {step < 3 ? (
           <button
             onClick={nextStep}
-            disabled={!canNext}
+            disabled={!canNext || isPending} // 🔥 juga lebih aman disable next saat pending
             className="bg-accent text-dark px-12 py-2 rounded disabled:opacity-50"
           >
             Continue
@@ -115,7 +112,7 @@ export default function CourseForm({
             disabled={!canNext || isPending}
             className="bg-accent text-dark px-12 py-2 rounded disabled:opacity-50"
           >
-            {isPending ? "Generate Course..." : 'Submit'}
+            {isPending ? "AI Generating Course..." : "Submit"}
           </button>
         )}
       </div>

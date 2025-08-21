@@ -9,9 +9,9 @@ const useCreateCourse = () => {
   const { mutate: handleGetCourse, isPending } = useMutation({
     mutationFn: (body) => createCourse(body),
     onSuccess: (res) => {
-      toast.success("Redirecting...");
       console.log(res);
-      return navigate("/dashboard/course");
+      toast.success("Redirecting...", { duration: 1500 });
+      navigate("/success");
     },
     onError: (err) => {
       console.log(err);

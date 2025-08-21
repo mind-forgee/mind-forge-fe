@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { LandingLayout } from "../layouts/LandingLayout";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
@@ -14,7 +14,6 @@ import ChapterDetail from "../pages/users/ChapterDetail";
 import StudyCase from "../pages/users/StudyCase";
 import AdminLayout from "../layouts/AdminLayout";
 import Overview from "../pages/admin/Overview";
-import Courses from "../components/landing/Courses";
 import Blog from "../pages/admin/Blog";
 import ManageCourses from "../pages/admin/ManageCourses";
 import Topics from "../pages/admin/Topics";

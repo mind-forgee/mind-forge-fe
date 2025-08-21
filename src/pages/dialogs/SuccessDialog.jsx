@@ -11,7 +11,7 @@ const SuccessDialog = () => {
       <p className="text-secondary mb-12 text-sm">
         The course you selected has been opened. Please click the <br /> button below.
       </p>
-      <SecondaryButton children={"Homepage"} onclick={() => window.location.href = "/select-course"} />
+      <SecondaryButton children={"Dashboard"} onclick={() => window.location.href = "/dashboard/course"} />
     </DialogLayout>
   )
 }
