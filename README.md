@@ -91,7 +91,9 @@ frontend/
 ├── package.json
 └── README.md
 
-⚙️ Environment Variables
+```
+
+## ⚙️ Environment Variables
 
 Create a .env file inside the frontend directory:
 
@@ -102,7 +104,9 @@ For local development:
 
 VITE_API_URL=http://localhost:3001
 
-🚀 Installation
+---
+
+## 🚀 Installation
 
 Clone the repository
 
@@ -130,7 +134,9 @@ Open in browser
 
 http://localhost:5173
 
-▶️ Usage
+---
+
+## ▶️ Usage
 
 Register or log in to your account.
 
@@ -140,7 +146,9 @@ Study the chapters and complete the final study case.
 
 Admins can access the dashboard to manage users, courses, and topics.
 
-🤝 Contributing
+---
+
+## 🤝 Contributing
 
 Contributions are always welcome! 🚀
 
@@ -163,13 +171,17 @@ git push origin feature/your-feature
 
 Open a Pull Request
 
-📄 License
+---
+
+## 📄 License
 
 This project is licensed under the MIT License.
 See the LICENSE
  file for more details.
 
-🌟 Acknowledgements
+ ---
+
+## 🌟 Acknowledgements
 
 Gemini AI
  for powering course generation
