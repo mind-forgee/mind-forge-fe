@@ -1,4 +1,4 @@
-<img width="1159" height="654" alt="image" src="https://github.com/user-attachments/assets/09d272c0-e3fe-4a36-8c65-649f78a27617" /><img width="1159" height="654" alt="image" src="https://github.com/user-attachments/assets/0e93d827-f474-4254-bd75-549c2fa19fbe" /># ⚡ MindForge
+# ⚡ MindForge
 
 ![MindForge Homepage](./public/images/mindforge.png)
 
