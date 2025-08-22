@@ -24,7 +24,7 @@ const Courses = () => {
     <section id="courses" className="py-12 md:px-16 px-8">
       <div className="mb-8 flex flex-col md:flex-row justify-between md:items-center gap-4">
         <h2 className="text-3xl font-bold">
-          Popular Courses <br /> Just For You!
+          Popular Topics <br /> Just For You!
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <CategoryDropdown

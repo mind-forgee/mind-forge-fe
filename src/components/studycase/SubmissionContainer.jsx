@@ -1,7 +1,13 @@
 import useCourseSubmission from "../../hooks/useCourseSubmission";
+import { useGetUserCourse } from "../../hooks/useGetUserCourse";
 
 const SubmissionContainer = () => {
-  const { formik, isPending } = useCourseSubmission();
+  const { data: course } = useGetUserCourse();
+  const studyCaseChapterId = course?.course?.chapters?.find(
+    (chapter) => chapter.is_study_case === true
+  )?.id;
+  console.log("studyCaseChapterId", studyCaseChapterId);
+  const { formik, isPending } = useCourseSubmission(studyCaseChapterId);
 
   return (
     <section>

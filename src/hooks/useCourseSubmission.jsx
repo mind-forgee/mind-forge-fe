@@ -4,32 +4,29 @@ import { courseSubmission } from "../api/course/courseSubmission"
 import { toast } from "sonner"
 
 
-const useCourseSubmission = () => {
+const useCourseSubmission = (studyCaseChapterId) => {
+  const { mutate, isPending } = useMutation({
+    mutationFn: (body) => courseSubmission({ studyCaseChapterId, body }),
+    onError: () => {
+      toast.error("Failed to submit course. Please try again.")
+    },
+    onSuccess: () => {
+      toast.success("Course submitted successfully!")
+    }
+  })
 
-    const formik = useFormik({
-        initialValues: {
-            proof_url: ""
-        },
-        onSubmit: (values) => {
-            mutate(values)
-        }
-    })
+  const formik = useFormik({
+    initialValues: { proof_url: "" },
+    onSubmit: (values) => {
+      if (!studyCaseChapterId) {
+        toast.error("Study Case Chapter ID not found")
+        return
+      }
+      mutate(values)
+    }
+  })
 
-    const { mutate, isPending } = useMutation({
-        mutationFn: (body) => courseSubmission(body),
-        onError: (err) => {
-            toast.error("Failed to submit course. Please try again.")
-            console.error("Error:", err)
-        },
-        onSuccess: () => {
-            toast.success("Course submitted successfully!")
-        }
-    })
-
-  return {
-      formik,
-      isPending
-  }
+  return { formik, isPending }
 }
 
 export default useCourseSubmission

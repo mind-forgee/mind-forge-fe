@@ -14,14 +14,13 @@ import ChapterDetail from "../pages/users/ChapterDetail";
 import StudyCase from "../pages/users/StudyCase";
 import AdminLayout from "../layouts/AdminLayout";
 import Overview from "../pages/admin/Overview";
-import Blog from "../pages/admin/Blog";
 import ManageCourses from "../pages/admin/ManageCourses";
 import Topics from "../pages/admin/Topics";
 import ProtectedRoutes from "../layouts/ProtectedRoutes";
 import ChapterLayout from "../layouts/ChapterLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AdminProfile from "../pages/admin/AdminProfile";
-import UserSubmisson from "../pages/admin/Blog";
+import UserSubmisson from "../pages/admin/UserSubmission";
 
 export const router = createBrowserRouter([
   {

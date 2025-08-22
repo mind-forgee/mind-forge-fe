@@ -54,7 +54,6 @@ const AdminProfile = () => {
             <SettingProfile
               name={user.full_name}
               email={user.email}
-              lastName={"Didi"}
             />
           </div>
         </div>

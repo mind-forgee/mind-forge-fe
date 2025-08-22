@@ -5,4 +5,6 @@ export const ENDPOINT = {
     SESSION: '/auth/session',
     COURSE: '/courses',
     TOPICS: '/topics',
+    PROFILE: '/profile',
+    PASSWORD: '/auth/change-password',
 };
