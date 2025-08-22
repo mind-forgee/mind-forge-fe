@@ -5,6 +5,7 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
 const ProtectedRoutes = ({ allowedRoles }) => {
   const location = useLocation();
   const { data: user, isLoading } = useGetUser();
+  console.log("ProtectedRoutes user:", user);
 
   if (isLoading) {
     return (
