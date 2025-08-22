@@ -25,7 +25,6 @@ const TestimonialSwiper = ({
             disableOnInteraction: false,
           }}
           onSlideChange={(swiper) => {
-            console.log("Slide changed to:", swiper.activeIndex);
             setCurrentSlide(swiper.activeIndex);
           }}
           modules={[Pagination, Autoplay]}

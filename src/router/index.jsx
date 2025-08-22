@@ -20,6 +20,8 @@ import Topics from "../pages/admin/Topics";
 import ProtectedRoutes from "../layouts/ProtectedRoutes";
 import ChapterLayout from "../layouts/ChapterLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
+import AdminProfile from "../pages/admin/AdminProfile";
+import UserSubmisson from "../pages/admin/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -94,8 +96,12 @@ export const router = createBrowserRouter([
             element: <Topics />,
           },
           {
-            path: "blog",
-            element: <Blog />,
+            path: "profile",
+            element: <AdminProfile />,
+          },
+          {
+            path: "submission-case",
+            element: <UserSubmisson />,
           },
         ],
       },

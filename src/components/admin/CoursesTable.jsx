@@ -2,11 +2,24 @@ import { Trash2 } from "lucide-react";
 import { difficultyCourse } from "../../config/difficultyCourse";
 import useDeleteCourse from "../../hooks/useDeleteCourse";
 
-const CoursesTable = ({ columns, data }) => {
-    const deleteCourseMutation = useDeleteCourse();
-    const handleDelete = (courseId) => {
-        deleteCourseMutation.mutate(courseId);
-    };
+const SkeletonRow = ({ columns }) => {
+  return (
+    <tr className="animate-pulse">
+      {columns.map((_, idx) => (
+        <td key={idx} className="p-3">
+          <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+        </td>
+      ))}
+    </tr>
+  );
+};
+
+const CoursesTable = ({ columns, data, loading }) => {
+  const deleteCourseMutation = useDeleteCourse();
+  const handleDelete = (courseId) => {
+    deleteCourseMutation.mutate(courseId);
+  };
+
   return (
     <div className="rounded-xl overflow-hidden">
       <div className="flex justify-between items-center p-4">
@@ -23,35 +36,42 @@ const CoursesTable = ({ columns, data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((course, index) => {
-            const difficulty = difficultyCourse[course.difficulty];
+          {loading
+            ? Array.from({ length: 5 }).map((_, idx) => (
+                <SkeletonRow key={idx} columns={columns} />
+              ))
+            : data.map((course, index) => {
+                const difficulty = difficultyCourse[course.difficulty];
 
-            return (
-              <tr
-                key={course.id}
-                className="hover:bg-gray-50 transition text-sm"
-              >
-                <td className="p-3">{index + 1}</td>
-                <td className="p-3">{course?.title || "unknown"}</td>
-                <td className="p-3">
-                  <span
-                    className={`px-2 py-1 rounded-lg text-xs font-medium ${difficulty.color}`}
+                return (
+                  <tr
+                    key={course.id}
+                    className="hover:bg-gray-50 transition text-sm"
                   >
-                    {difficulty.label}
-                  </span>
-                </td>
-                <td className="p-3 max-w-md truncate">{course.description}</td>
-                <td className="p-3">
-                  <button
-                    onClick={() => handleDelete(course.id)}
-                    className="text-red-500  border px-2 py-1 border-red-500 hover:bg-red-500 hover:text-white rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {deleteCourseMutation.isLoading ? "Deleting..." : <Trash2 />}
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+                    <td className="p-3">{index + 1}</td>
+                    <td className="p-3">{course?.title || "unknown"}</td>
+                    <td className="p-3">
+                      <span
+                        className={`px-2 py-1 rounded-lg text-xs font-medium ${difficulty.color}`}
+                      >
+                        {difficulty.label}
+                      </span>
+                    </td>
+                    <td className="p-3 max-w-md truncate">
+                      {course.description}
+                    </td>
+                    <td className="p-3">
+                      <button
+                        onClick={() => handleDelete(course.id)}
+                        className="text-red-500 border px-2 py-1 border-red-500 hover:bg-red-500 hover:text-white rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={deleteCourseMutation.isLoading}
+                      >
+                        {deleteCourseMutation.isLoading ? "Deleting..." : <Trash2 />}
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
         </tbody>
       </table>
     </div>

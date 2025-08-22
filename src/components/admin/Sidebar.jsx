@@ -17,9 +17,7 @@ const sidebarItems = [
   { name: "Courses", icon: BookOpen, path: "/admin/courses" },
   { name: "Topic", icon: FolderKanban, path: "/admin/topics" },
   { name: "User Profile", icon: User, path: "/admin/profile" },
-  { name: "Account", icon: Settings, path: "/admin/account" },
-  { name: "Corporate", icon: Building2, path: "/admin/corporate" },
-  { name: "Blog", icon: FileText, path: "/admin/blog" },
+  { name: "Submission", icon: Building2, path: "/admin/submission-case" },
 ];
 
 export default function Sidebar({ onClose }) {

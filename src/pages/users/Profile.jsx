@@ -11,7 +11,6 @@ const Profile = () => {
   const { data: user, isLoading } = useGetUser();
   const { data: course } = useGetUserCourse();
   const userCourse = course?.course;
-  console.log("course from profile", userCourse);
   const { mutate: logout } = useLogout();
 
   if (isLoading) {

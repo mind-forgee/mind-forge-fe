@@ -1,51 +1,32 @@
-import React, { useState } from "react";
+import useCourseSubmission from "../../hooks/useCourseSubmission";
 
-const SubmissionContainer = ({ onPrevious, onSubmit }) => {
-  const [url, setUrl] = useState("");
-  const [description, setDescription] = useState("");
-
-  const handleSubmit = () => {
-    // kirim data url + description ke parent
-    onSubmit({ url, description });
-  };
+const SubmissionContainer = () => {
+  const { formik, isPending } = useCourseSubmission();
 
   return (
     <section>
       <h3 className="text-2xl font-bold mb-4">Submission</h3>
       <div className="bg-white p-6 rounded-md shadow-sm">
         <div className="mb-6">
-          <label className="block text-sm font-medium mb-2">Project URL</label>
-          <input
-            type="url"
-            placeholder="https://yourproject.com"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            className="block w-full border border-gray-300 rounded-md p-3"
-          />
+          <form onSubmit={formik.handleSubmit}>
+            <label className="block text-sm font-medium mb-2">
+              Project URL
+            </label>
+            <input
+              name="proof_url"
+              placeholder="https://yourproject.com"
+              value={formik.values.proof_url}
+              onChange={formik.handleChange}
+              className="block w-full border border-gray-300 rounded-md p-3"
+            />
+          </form>
         </div>
-
-        <div className="mb-6">
-          <label className="block text-sm font-medium mb-2">Course Descriptions</label>
-          <textarea
-            rows="4"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="block w-full border border-gray-300 rounded-md p-3"
-          />
-        </div>
-
         <div className="flex justify-between mt-6">
           <button
-            onClick={onPrevious}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md"
-          >
-            Previous
-          </button>
-          <button
-            onClick={handleSubmit}
+            onClick={formik.handleSubmit}
             className="bg-green-900 hover:bg-green-800 text-white px-6 py-2 rounded-md"
           >
-            Submit
+            {isPending ? "Sending..." : "Submit"}
           </button>
         </div>
       </div>

@@ -16,19 +16,8 @@ const SettingProfile = ({ name, lastName, email, phone }) => {
             <InputProfile value={name} placeholder="First name" />
           </div>
           <div>
-            <p className="text-sm text-gray-600">Last Name</p>
-            <InputProfile value={lastName} placeholder="Last name" />
-          </div>
-          <div>
             <p className="text-sm text-gray-600">Email</p>
             <InputProfile type="email" value={email} placeholder="Email" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-600">Phone</p>
-            <div className="flex gap-2 items-center">
-              <InputProfile value="+51" className="w-20" />
-              <InputProfile value={phone} placeholder="Phone number" />
-            </div>
           </div>
         </div>
         <SecondaryButton children={"Save changes"} />
@@ -42,7 +31,6 @@ const SettingProfile = ({ name, lastName, email, phone }) => {
           <label className="text-sm text-gray-600">Change password</label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-1">
             <InputProfile type="password" placeholder="Put your password..." />
-            <InputProfile type="password" placeholder="Confirm password..." />
           </div>
         </div>
 
@@ -62,9 +50,6 @@ const SettingProfile = ({ name, lastName, email, phone }) => {
 
         <div className="flex justify-between items-center">
           <SecondaryButton children={"Change password"} />
-          <a href="#" className="text-sm text-gray-600 hover:underline">
-            Forgot your password?
-          </a>
         </div>
       </div>
     </div>

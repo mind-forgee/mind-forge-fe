@@ -4,8 +4,6 @@ import { difficultyIcons } from "../../config/difficultyIcon.jsx";
 
 const ChapterNavbar = () => {
   const { data: course } = useGetUserCourse();
-  console.log(course);
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-secondary text-white px-4 py-6 shadow-md">
       <div className="flex items-center gap-2">

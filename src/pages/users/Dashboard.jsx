@@ -7,10 +7,11 @@ import SecondaryButton from "../../components/ui/SecondaryButton";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import {  Play } from "lucide-react";
 import { difficultyIcons } from "../../config/difficultyIcon.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { data, isLoading } = useGetUserCourse();
-  console.log(data);
+  const navigate = useNavigate();
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -28,13 +29,17 @@ const Dashboard = () => {
     (chapter) => chapter.video_url && chapter.video_url.trim() !== ""
   ).length;
 
+   const handleStartLearning = () => {
+    if (chapters.length > 0) {
+      const firstChapterId = chapters[0].id;
+      navigate(`/chapter/${firstChapterId}`);
+    }
+  };
 
   return (
     <>
-      <section className="py-12 min-h-screen flex items-center md:px-12 mt-12">
+      <section className="py-12 min-h-screen flex flex-col gap-y-12 mb-12 items-center md:px-12 mt-12">
         <Hero course={course} />
-      </section>
-      <section className="py-12 h-screen flex items-center md:px-12 mt-16">
         <CourseTabs course={course} />
       </section>
       <section className="py-12 min-h-screen md:px-12 px-4">
@@ -52,7 +57,7 @@ const Dashboard = () => {
         <CourseChapters chapters={chapters} />
 
         <div className="mt-4">
-          <SecondaryButton children={"Start Learning"} />
+          <SecondaryButton children={"Start Learning"} onclick={handleStartLearning} />
         </div>
       </section>
     </>

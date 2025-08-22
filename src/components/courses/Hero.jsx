@@ -20,16 +20,13 @@ const Hero = ({ course }) => {
           <AccentButton children={"Start Learning"}/>
         </div>
 
-        {/* <div className="relative w-full overflow-hidden rounded-lg shadow-lg">
-          <iframe
+        <div className="relative w-full overflow-hidden rounded-lg shadow-lg">
+          <img
             className="w-full h-64 md:h-80 rounded-lg"
-            src={course?.hero.promoVideo.embedUrl}
-            title="YouTube video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div> */}
+            src="/images/courseimage.png"
+            alt="Cousre"
+          />
+        </div>
 
       </div>
     </div>

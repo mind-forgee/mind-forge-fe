@@ -1,8 +1,8 @@
 import React from 'react'
 
-const InformationProfile = ({ name, email, phone, plan, level, onLogout}) => {
+const InformationProfile = ({ name, email, plan, level, onLogout}) => {
   return (
-    <div className='bg-white px-9 py-12 rounded-lg shadow-md'>
+    <div className='bg-white px-9 py-6 rounded-lg shadow-md'>
         <h3 className='text-lg font-bold text-primary mb-4'>Information</h3>
         <table className='table-auto w-full'>
           <tbody>
@@ -15,12 +15,8 @@ const InformationProfile = ({ name, email, phone, plan, level, onLogout}) => {
               <td className='text-sm text-gray-600'>{email}</td>
             </tr>
             <tr>
-              <td className='text-sm text-primary font-semibold'>Phone</td>
-              <td className='text-sm text-gray-600'>{phone}</td>
-            </tr>
-            <tr>
               <td className='text-sm text-primary font-semibold'>Plan</td>
-              <td className='text-sm text-gray-600'>{plan}</td>
+              <td className='text-sm text-gray-600'>{plan || "No Course Yet"}</td>
             </tr>
             <tr>
               <td className='text-sm text-primary font-semibold'>Level</td>
