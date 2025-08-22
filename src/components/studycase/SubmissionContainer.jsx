@@ -13,7 +13,6 @@ const SubmissionContainer = () => {
 
   const isApproved = proofs.some((proof) => proof.approved === true);
   const isSubmitted = proofs.length > 0; 
-
   const submittedProof = proofs[0]?.proof_url; 
 
   const { formik, isPending } = useCourseSubmission(studyCaseChapterId);
@@ -29,9 +28,9 @@ const SubmissionContainer = () => {
               <input
                 name="proof_url"
                 placeholder="https://yourproject.com"
-                value={isSubmitted ? submittedProof : formik.values.proof_url}
+                value={formik.values.proof_url || submittedProof || ""}
                 onChange={formik.handleChange}
-                disabled={isSubmitted} 
+                disabled={isApproved} 
                 className={`block w-full border rounded-md p-3 ${
                   isApproved
                     ? "border-green-500 bg-green-50"
@@ -70,11 +69,11 @@ const SubmissionContainer = () => {
             </button>
           ) : (
             <button
-              disabled
-              className="bg-yellow-500 text-white px-6 py-2 rounded-md cursor-wait"
+              onClick={formik.handleSubmit}
+              disabled={isPending}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md"
             >
-              <Clock className="inline mr-2" />
-              Pending Approval 
+              {isPending ? "Resubmitting..." : "Resubmit"}
             </button>
           )}
         </div>
